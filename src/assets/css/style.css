@@ -1,0 +1,509 @@
+/****************************************\
+
+Hecho por José Soplin (NO BORRAR) :v
+
+*****************************************/
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap");
+body {
+  font-family: "Nunito", sans-serif;
+  color: #1e3547 !important;
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+}
+
+.btn,
+.btn:focus,
+button,
+button:focus {
+  outline: none !important;
+}
+
+a {
+  text-decoration: none !important;
+  outline: none;
+}
+
+p {
+  line-height: 1.6;
+}
+
+/*Transición perrona :v */
+.preloader {
+  background: #eaf4fb;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 0;
+  width: 100%;
+  z-index: 9999999;
+}
+
+.status {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border-radius: 15px;
+  -webkit-animation: rotation 1s infinite;
+          animation: rotation 1s infinite;
+  z-index: 9;
+  top: 50%;
+  left: 50%;
+}
+
+.status .shape {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.status .shape.shape-1 {
+  left: 0;
+  background-color: #10a6ba;
+}
+
+.status .shape.shape-2 {
+  right: 0;
+  background-color: #3850d5;
+}
+
+.status .shape.shape-3 {
+  bottom: 0;
+  background-color: #10a6ba;
+}
+
+.status .shape.shape-4 {
+  bottom: 0;
+  right: 0;
+  background-color: #3850d5;
+}
+
+.status .shape-1 {
+  -webkit-animation: shape1 0.5s infinite alternate;
+          animation: shape1 0.5s infinite alternate;
+}
+
+.status .shape-2 {
+  -webkit-animation: shape2 0.5s infinite alternate;
+          animation: shape2 0.5s infinite alternate;
+}
+
+.status .shape-3 {
+  -webkit-animation: shape3 0.5s infinite alternate;
+          animation: shape3 0.5s infinite alternate;
+}
+
+.status .shape-4 {
+  -webkit-animation: shape4 0.5s infinite alternate;
+          animation: shape4 0.5s infinite alternate;
+}
+
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes shape1 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(40px, 40px);
+            transform: translate(40px, 40px);
+  }
+}
+
+@keyframes shape1 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(40px, 40px);
+            transform: translate(40px, 40px);
+  }
+}
+
+@-webkit-keyframes shape2 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(-40px, 40px);
+            transform: translate(-40px, 40px);
+  }
+}
+
+@keyframes shape2 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(-40px, 40px);
+            transform: translate(-40px, 40px);
+  }
+}
+
+@-webkit-keyframes shape3 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(40px, -40px);
+            transform: translate(40px, -40px);
+  }
+}
+
+@keyframes shape3 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(40px, -40px);
+            transform: translate(40px, -40px);
+  }
+}
+
+@-webkit-keyframes shape4 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(-40px, -40px);
+            transform: translate(-40px, -40px);
+  }
+}
+
+@keyframes shape4 {
+  from {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+  }
+  to {
+    -webkit-transform: translate(-40px, -40px);
+            transform: translate(-40px, -40px);
+  }
+}
+
+/* Fin Transición perrona :v */
+
+.vertical-content {
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-justify-content: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.bg-overlay {
+  background-color: rgba(14, 21, 33, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.bg-gradient {
+  background: -webkit-gradient(linear, left top, left bottom, from(#00c99c), to(#3850d5));
+  background: linear-gradient(to bottom, #00c99c, #3850d5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+}
+
+hr {
+  border-top: 1px solid #f0f0f0;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-15 {
+  font-size: 15px;
+}
+
+.f-16 {
+  font-size: 16px;
+}
+
+.f-17 {
+  font-size: 17px;
+}
+
+.f-18 {
+  font-size: 18px;
+}
+
+.f-20 {
+  font-size: 20px;
+}
+
+.f-24 {
+  font-size: 24px;
+}
+
+.line-height_1_4 {
+  line-height: 1.4;
+}
+
+.line-height_1_6 {
+  line-height: 1.6;
+}
+
+.line-height_1_8 {
+  line-height: 1.8;
+}
+
+.font-weight-600 {
+  font-weight: 600;
+}
+
+.bg-light {
+  background-color: #eaf4fb !important;
+}
+
+.text-muted {
+  color: #828f99 !important;
+}
+
+.btn {
+  padding: 12px 26px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+}
+
+.btn:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-sm {
+  padding: 7px 14px;
+  font-size: 12px;
+}
+
+.bg-primary {
+  background-color: #3850d5 !important;
+}
+
+.bg-soft-primary {
+  background-color: rgba(56, 80, 213, 0.1) !important;
+}
+
+.text-primary {
+  color: #3850d5 !important;
+}
+
+
+
+.btn-soft-primary {
+  background-color: rgba(56, 80, 213, 0.25) !important;
+  color: #3850d5 !important;
+}
+
+.btn-soft-primary:hover, .btn-soft-primary:focus, .btn-soft-primary:active, .btn-soft-primary.active, .btn-soft-primary.focus, .btn-soft-primary:not(:disabled):not(.disabled):active, .btn-soft-primary:not(:disabled):not(.disabled):active:focus,
+.btn-soft-primary .open > .dropdown-toggle.btn-primary {
+  background: #2b44cd;
+}
+
+.btn-primary {
+  background: #3850d5 !important;
+  border-color: #3850d5 !important;
+  border-radius: 15px;
+}
+
+
+.text-muted {
+  color: #828f99 !important;
+}
+
+
+.header {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 999;
+  padding: 25px 0;
+}
+
+.home-btn {
+  position: absolute;
+  bottom: 40px;
+  right: 30px;
+  z-index: 1;
+}
+
+.home-center {
+  display: table;
+  width: 100%;
+  height: 100%;
+}
+
+.home-desc-center {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.cartita{
+  border-radius: 15px!important;
+}
+
+.contain-box {
+  height: 100vh;
+  position: relative;
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .contain-box {
+    padding: 120px 0px 100px 0px;
+    height: auto;
+  }
+  .home-btn {
+    top: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  #countdown .count-down, #eventdown .count-down {
+    width: 40%;
+  }
+}
+
+#nombres {
+  border-radius: 15px;
+}
+#apellidos{
+  border-radius: 15px;
+}
+#pais{
+  border-radius: 15px;
+}
+#departamento{
+  border-radius: 15px;
+}
+#provincia{
+  border-radius: 15px;
+}
+#distrito{
+  border-radius: 15px;
+}
+#email{
+  border-radius: 15px;
+}
+#userpassword{
+  border-radius: 15px;
+}
+.form-group{
+  margin-top: -2.5%;
+}
+.clasesita{
+  max-height: 87%;
+}
+.imagenRegistro{
+  display: inline-block;
+  margin-bottom: -20%;
+  margin-top: 2.5%;
+}
+
+.textoAgricultor{
+  margin-top: -5%;
+  margin-bottom: 3%!important;
+}
+.nombreRegistro{
+  margin-top: 3%!important;
+}
+@media (min-width: 200px) and (max-width: 768px) {
+  #nombres {
+    font-size: 1.5vh;
+  }
+  #apellidos{
+    font-size: 1.5vh;
+  }
+  #pais{
+    font-size: 1.5vh;
+  }
+  #departamento{
+    font-size: 1.5vh;
+  }
+  #provincia{
+    font-size: 1.5vh;
+  }
+  #distrito{
+    font-size: 1.5vh;
+  }
+  #email{
+    font-size: 1.5vh;
+  }
+  #userpassword{
+    font-size: 1.5vh;
+  }
+  .clasesita{
+    height: 90%!important;
+    max-height: 100%;
+  }
+  .letraRegistro{
+    font-size: 1.7vh!important;
+  }
+  .letraRecuerdame{
+    font-size: 1.7vh!important;
+  }
+  .nombreRegistro{
+    margin-top: 8%!important;
+  }
+}
