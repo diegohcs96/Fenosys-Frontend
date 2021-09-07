@@ -51,7 +51,7 @@ export class SigninAgricultorComponent implements OnInit {
       passwordUsuario: this.signinagricultorForm.controls['passwordUsuario'].value
     }
 
-    this.signinService.SigninMaster(agricultor).subscribe(
+    this.signinService.SigninAgricultor(agricultor).subscribe(
       data => {
         this.tokenstorageService.saveToken(data.token);
         this.tokenstorageService.saveUser(data);

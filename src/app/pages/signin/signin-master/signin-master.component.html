@@ -80,32 +80,7 @@
                                                     <span class="text-danger" *ngIf="signinmasterForm.controls['passwordUsuario'].hasError('required')">
                                                         No puede dejar este campo vacío
                                                     </span>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="signinmasterForm.controls['passwordUsuario'].hasError('minlength')">
-                                                        Debe contener al menos 8 caracteres
-                                                    </span>
-                                                </div> 
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="signinmasterForm.controls['passwordUsuario'].hasError('passwordnumber')">
-                                                        Debe contener al menos un número
-                                                    </span>
-                                                </div> 
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="signinmasterForm.controls['passwordUsuario'].hasError('passworduppercase')">
-                                                        Debe contener al menos una letra mayúscula
-                                                    </span>
-                                                </div> 
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="signinmasterForm.controls['passwordUsuario'].hasError('passwordsmallcase')">
-                                                        Debe contener al menos una letra minúscula
-                                                    </span>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="signinmasterForm.controls['passwordUsuario'].hasError('passwordspecialcharacter')">
-                                                        Debe contener al menos un carácter especial
-                                                    </span>
-                                                </div> 
+                                                </div>                                                
                                         </div>
 
                                         <div *ngIf="this.alert" class="alert alert-danger" role="alert">

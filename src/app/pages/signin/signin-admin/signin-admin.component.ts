@@ -51,7 +51,7 @@ export class SigninAdminComponent implements OnInit {
       passwordUsuario: this.signinadminForm.controls['passwordUsuario'].value
     }
 
-    this.signinService.SigninMaster(admin).subscribe(
+    this.signinService.SigninAdmin(admin).subscribe(
       data => {
         this.tokenstorageService.saveToken(data.token);
         this.tokenstorageService.saveUser(data);
