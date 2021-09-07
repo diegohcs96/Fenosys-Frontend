@@ -43,7 +43,7 @@ export class SigninMasterComponent implements OnInit {
         this.master_logged = this.tokenstorageService.getUser();
 
         console.log(data);       
-        //window.location.href='/request/admin';
+        window.location.href='/request/admin';
       },
       err => {
         console.log(err);

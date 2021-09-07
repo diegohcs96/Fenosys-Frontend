@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Registro Agricultor - Fenosys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+
+    <link href="/assets/css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="vh-100 bg-light" style="background: url(/assets/images/overlay-1.png) center;">
+    <div class="preloader">
+        <div class="status">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="contain-box">
+        <div class="home-btn">
+            <a href="" class="back-button text-primary h5"><i class="mdi mdi-arrow-left mr-1"></i> Retroceder</a>
+        </div>
+        <div class="home-center">
+            <div class="home-desc-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items center">
+                        <div class="col-lg-6">
+                            <div class="text-center animate__animated animate__fadeInLeft">
+                                <a href="" class="imagenRegistro"><img src="/assets/images/LogoFenosys.png" alt="" height="50" /></a>
+
+                                <p class="text-muted mt-3"></p>
+                            </div>
+
+                            <div
+                                class="cartita clasesita p-5 mt-5 px-3 rounded bg-white animate__animated animate__fadeInRight">
+                                <div class="text-center">
+                                    <h4 class="text-primary textoAgricultor">Registro Agricultor</h4>
+                                </div>
+
+                                <div class="custom-form">
+                                    <form name="agricultorSignupForm" [formGroup]="agricultorSignupForm" (ngSubmit)="SignUpAgricultor()">
+                                        <div class="form-group">
+                                            <label for="nombres" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Nombres</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" placeholder="Ingrese sus Nombres" formControlName="nombreUsuario" 
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['nombreUsuario'].invalid && 
+                                                             (agricultorSignupForm.controls['nombreUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['nombreUsuario'].touched) , 
+                                                'is-valid':   agricultorSignupForm.controls['nombreUsuario'].valid}" />
+                                        
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['nombreUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['nombreUsuario'].hasError('minlength')">
+                                                    Debe contener al menos 2 caracteres
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['nombreUsuario'].hasError('maxlength')">
+                                                    Debe contener como maximo 50 caracteres
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['nombreUsuario'].hasError('pattern')">
+                                                    Caracteres no permitidos
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="apellidos" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Apellidos</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="apellidos" placeholder="Ingrese sus Apellidos" formControlName="apellidoUsuario" 
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['apellidoUsuario'].invalid && 
+                                                             (agricultorSignupForm.controls['apellidoUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['apellidoUsuario'].touched) , 
+                                                'is-valid':   agricultorSignupForm.controls['apellidoUsuario'].valid}" />
+                                        
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['apellidoUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['apellidoUsuario'].hasError('minlength')">
+                                                    Debe contener al menos 2 caracteres
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['apellidoUsuario'].hasError('maxlength')">
+                                                    Debe contener como maximo 50 caracteres
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['apellidoUsuario'].hasError('pattern')">
+                                                    Caracteres no permitidos
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="pais" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Pais</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="pais" placeholder="Ingrese su Pais" formControlName="paisUsuario" 
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['paisUsuario'].invalid && 
+                                                             (agricultorSignupForm.controls['paisUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['paisUsuario'].touched) , 
+                                                'is-valid':   agricultorSignupForm.controls['paisUsuario'].valid}"/>
+
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['paisUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['paisUsuario'].hasError('maxlength')">
+                                                    Debe contener como maximo 50 caracteres
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="departamento" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Departamento</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="departamento" placeholder="Ingrese su Departamento" formControlName="departamentoUsuario"
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['departamentoUsuario'].invalid && 
+                                                             (agricultorSignupForm.controls['departamentoUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['departamentoUsuario'].touched) , 
+                                                'is-valid':   agricultorSignupForm.controls['departamentoUsuario'].valid}"/>
+
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['departamentoUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['departamentoUsuario'].hasError('maxlength')">
+                                                    Debe contener como maximo 50 caracteres
+                                                </span>
+                                            </div>                                            
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="provincia" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Provincia</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="provincia" placeholder="Ingrese su Provincia" formControlName="provinciaUsuario"
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['provinciaUsuario'].invalid && 
+                                                             (agricultorSignupForm.controls['provinciaUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['provinciaUsuario'].touched) , 
+                                                'is-valid':   agricultorSignupForm.controls['provinciaUsuario'].valid}"/>
+
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['provinciaUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['provinciaUsuario'].hasError('maxlength')">
+                                                    Debe contener como maximo 50 caracteres
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="distrito" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Distrito</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="distrito" placeholder="Ingrese su Distrito" formControlName="distritoUsuario"
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['distritoUsuario'].invalid && 
+                                                             (agricultorSignupForm.controls['distritoUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['distritoUsuario'].touched) , 
+                                                'is-valid':   agricultorSignupForm.controls['distritoUsuario'].valid}"/>
+
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['distritoUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['distritoUsuario'].hasError('maxlength')">
+                                                    Debe contener como maximo 50 caracteres
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="nombres" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Nombre de Usuario</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" placeholder="Ingrese un nombre de usuario para la cuenta" formControlName="usernameUsuario" 
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['usernameUsuario'].invalid && 
+                                                             (agricultorSignupForm.controls['usernameUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['usernameUsuario'].touched) , 
+                                                'is-valid':   agricultorSignupForm.controls['usernameUsuario'].valid}" />
+                                        
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['usernameUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['usernameUsuario'].hasError('minlength')">
+                                                    Debe contener al menos 6 caracteres
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['usernameUsuario'].hasError('maxlength')">
+                                                    Debe contener como maximo 20 caracteres
+                                                </span>
+                                            </div>                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="email" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Correo electrónico</label>
+                                            <input type="email" (input)="this.AlertDefault()" class="form-control" id="email" placeholder="Ingrese su correo electrónico" formControlName="emailUsuario"
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['emailUsuario'].invalid && 
+                                                              (agricultorSignupForm.controls['emailUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['emailUsuario'].touched) , 
+                                                  'is-valid': agricultorSignupForm.controls['emailUsuario'].valid}">
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['emailUsuario'].hasError('required')">
+                                                    No puede dejar este campo vacío
+                                                </span>
+                                            </div>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['emailUsuario'].hasError('email')">
+                                                    Correo electrónico no válido
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="userpassword" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Contraseña</label>
+                                            <input type="password" class="form-control" id="userpassword" placeholder="Ingrese la contraseña deseada" formControlName="passwordUsuario"
+                                            [ngClass]="{
+                                                'is-invalid': agricultorSignupForm.controls['passwordUsuario'].invalid && 
+                                                              (agricultorSignupForm.controls['passwordUsuario'].dirty || 
+                                                              agricultorSignupForm.controls['passwordUsuario'].touched) , 
+                                                  'is-valid': agricultorSignupForm.controls['passwordUsuario'].valid}"/>
+                                                
+                                                  <div class="invalid-feedback">
+                                                      <span class="text-danger" *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('required')">
+                                                          No puede dejar este campo vacío
+                                                      </span>
+                                                  </div>
+                                                  <div class="invalid-feedback">
+                                                      <span class="text-danger" *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('minlength')">
+                                                          Debe contener al menos 8 caracteres
+                                                      </span>
+                                                  </div> 
+                                                  <div class="invalid-feedback">
+                                                      <span class="text-danger" *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordnumber')">
+                                                          Debe contener al menos un número
+                                                      </span>
+                                                  </div> 
+                                                  <div class="invalid-feedback">
+                                                      <span class="text-danger" *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passworduppercase')">
+                                                          Debe contener al menos una letra mayúscula
+                                                      </span>
+                                                  </div> 
+                                                  <div class="invalid-feedback">
+                                                      <span class="text-danger" *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordsmallcase')">
+                                                          Debe contener al menos una letra minúscula
+                                                      </span>
+                                                  </div>
+                                                  <div class="invalid-feedback">
+                                                      <span class="text-danger" *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordspecialcharacter')">
+                                                          Debe contener al menos un carácter especial
+                                                      </span>
+                                                  </div> 
+                                        </div>
+
+                                        <div *ngIf="this.alert" class="alert alert-danger" role="alert">
+                                            {{message}}
+                                        </div>
+
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary btn-block text-uppercase" [disabled]="!agricultorSignupForm.valid">Regístrate</button>
+                                        </div>
+                                        <div class="mt-4 mb-0 text-center">
+                                            <p class="mb-0">¿Tienes una cuenta? <a href="login.html"
+                                                    class="text-info">¡Logueate!</a></p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+</body>
+
+</html>

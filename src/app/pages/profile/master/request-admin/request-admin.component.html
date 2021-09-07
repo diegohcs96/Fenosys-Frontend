@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Registrar Administrador - Fenosys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+
+    <link href="/assets/css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="vh-100 bg-light overflow-hidden" style="background: url(/assets/images/overlay-1.png) center;">
+    <div class="preloader">
+        <div class="status">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="contain-box">
+        <div class="home-btn">
+            <a href="" class="back-button text-primary h5"><i class="mdi mdi-arrow-left mr-1"></i> Retroceder</a>
+        </div>
+        <div class="home-center">
+            <div class="home-desc-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items center">
+                        <div class="col-lg-6">
+                            <div class="text-center animate__animated animate__fadeInLeft">
+                                <a href=""><img src="/assets/images/LogoFenosys.png" alt="" height="50" /></a>
+                            </div>
+
+                            <div
+                                class="cartita p-5 mt-5 px-3 rounded bg-white animate__animated animate__fadeInRight">
+                                <div class="text-center">
+                                    <h4 class="text-primary">Registrar Administrador</h4>
+
+                                    <p class="text-muted f-18">Ingresa el correo del Administrador.</p>
+                                </div>
+
+                                <div class="custom-form">
+
+                                    <div class="alert alert-info bg-soft-info text-info text-center mb-4 mt-4 pt-2"
+                                        role="alert">
+                                        Se envió un correo al Administrador con las instrucciones para su registro.
+                                    </div>
+
+                                    <form name="adminForm" [formGroup]="adminForm" (ngSubmit)="PasswordResetRequest()">
+
+                                        <div class="form-group">
+                                            <label for="useremail">Correo</label>
+                                            <input type="email" class="form-control" id="useremail" placeholder="Ingresar correo" formControlName="emailUsuario">
+                                        </div>
+
+                                        <div class="form-group row mb-0">
+                                            <div class="col-12 text-right">
+                                                <button style="margin-top: 5%;"
+                                                    class="btn btn-primary w-100 waves-effect waves-light text-uppercase" type="submit">Registrar Administrador</button>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+
+</html>

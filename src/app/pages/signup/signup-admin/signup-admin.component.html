@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Registro Administrador - Fenosys</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+
+    <link href="/assets/css/animate.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- css -->
+    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="vh-100 bg-light" style="background: url(/assets/images/overlay-1.png) center;">
+    <div class="preloader">
+        <div class="status">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </div>
+
+    <div class="contain-box">
+        <div class="home-btn">
+            <a href="" class="back-button text-primary h5"><i class="mdi mdi-arrow-left mr-1"></i> Retroceder</a>
+        </div>
+        <div class="home-center">
+            <div class="home-desc-center">
+                <div class="container">
+                    <div class="row justify-content-center align-items center">
+                        <div class="col-lg-6">
+                            <div class="text-center animate__animated animate__fadeInLeft">
+                                <a href="" class="imagenRegistro"><img src="/assets/images/LogoFenosys.png" alt="" height="50" /></a>
+
+                                <p class="text-muted mt-3"></p>
+                            </div>
+
+                            <div
+                                class="cartita clasesita p-5 mt-5 px-3 rounded bg-white animate__animated animate__fadeInRight">
+                                <div class="text-center">
+                                    <h4 class="text-primary textoAgricultor">Registro Administrador</h4>
+                                    <p class="text-muted f-18">Completa tu registro como Administrador</p>
+                                </div>
+
+                                <div class="custom-form">
+                                    <form name="adminSignupForm" [formGroup]="adminSignupForm" (ngSubmit)="SignUpAdmin()">
+                                        <div class="form-group">
+                                            <label for="nombres" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Nombres</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" formControlName="nombreUsuario" placeholder="Ingrese sus Nombres"
+                                                    [ngClass]="{
+                                                                'is-invalid': adminSignupForm.controls['nombreUsuario'].invalid && 
+                                                                             (adminSignupForm.controls['nombreUsuario'].dirty || 
+                                                                              adminSignupForm.controls['nombreUsuario'].touched) , 
+                                                                'is-valid':   adminSignupForm.controls['nombreUsuario'].valid}" />
+                                               
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['nombreUsuario'].hasError('required')">
+                                                        No puede dejar este campo vacío
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['nombreUsuario'].hasError('minlength')">
+                                                        Debe contener al menos 2 caracteres
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['nombreUsuario'].hasError('maxlength')">
+                                                        Debe contener como maximo 50 caracteres
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['nombreUsuario'].hasError('pattern')">
+                                                        Caracteres no permitidos
+                                                    </span>
+                                                </div>
+
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="apellidos" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Apellidos</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="apellidos" formControlName="apellidoUsuario"
+                                                placeholder="Ingrese sus Apellidos" 
+                                                [ngClass]="{
+                                                    'is-invalid': adminSignupForm.controls['apellidoUsuario'].invalid && 
+                                                                 (adminSignupForm.controls['apellidoUsuario'].dirty || 
+                                                                  adminSignupForm.controls['apellidoUsuario'].touched) , 
+                                                    'is-valid':   adminSignupForm.controls['apellidoUsuario'].valid}"/>
+
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['apellidoUsuario'].hasError('required')">
+                                                        No puede dejar este campo vacío
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['apellidoUsuario'].hasError('minlength')">
+                                                        Debe contener al menos 2 caracteres
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['apellidoUsuario'].hasError('maxlength')">
+                                                        Debe contener como maximo 50 caracteres
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['apellidoUsuario'].hasError('pattern')">
+                                                        Caracteres no permitidos
+                                                    </span>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="pais" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Pais</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="pais" formControlName="paisUsuario"
+                                                placeholder="Ingrese su Pais" 
+                                                [ngClass]="{
+                                                    'is-invalid': adminSignupForm.controls['paisUsuario'].invalid && 
+                                                                 (adminSignupForm.controls['paisUsuario'].dirty || 
+                                                                  adminSignupForm.controls['paisUsuario'].touched) , 
+                                                    'is-valid':   adminSignupForm.controls['paisUsuario'].valid}"/>
+
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['paisUsuario'].hasError('required')">
+                                                        No puede dejar este campo vacío
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['paisUsuario'].hasError('maxlength')">
+                                                        Debe contener como maximo 50 caracteres
+                                                    </span>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="departamento" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Departamento</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="departamento" formControlName="departamentoUsuario"
+                                                placeholder="Ingrese su Departamento" 
+                                                [ngClass]="{
+                                                    'is-invalid': adminSignupForm.controls['departamentoUsuario'].invalid && 
+                                                                 (adminSignupForm.controls['departamentoUsuario'].dirty || 
+                                                                  adminSignupForm.controls['departamentoUsuario'].touched) , 
+                                                    'is-valid':   adminSignupForm.controls['departamentoUsuario'].valid}"/>
+
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['departamentoUsuario'].hasError('required')">
+                                                        No puede dejar este campo vacío
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['departamentoUsuario'].hasError('maxlength')">
+                                                        Debe contener como maximo 50 caracteres
+                                                    </span>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="provincia" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Provincia</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="provincia" formControlName="provinciaUsuario"
+                                                placeholder="Ingrese su Provincia" 
+                                                [ngClass]="{
+                                                    'is-invalid': adminSignupForm.controls['provinciaUsuario'].invalid && 
+                                                                 (adminSignupForm.controls['provinciaUsuario'].dirty || 
+                                                                  adminSignupForm.controls['provinciaUsuario'].touched) , 
+                                                    'is-valid':   adminSignupForm.controls['provinciaUsuario'].valid}"/>
+
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['provinciaUsuario'].hasError('required')">
+                                                        No puede dejar este campo vacío
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['provinciaUsuario'].hasError('maxlength')">
+                                                        Debe contener como maximo 50 caracteres
+                                                    </span>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="distrito" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Distrito</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="distrito" formControlName="distritoUsuario"
+                                                placeholder="Ingrese su Distrito" 
+                                                [ngClass]="{
+                                                    'is-invalid': adminSignupForm.controls['distritoUsuario'].invalid && 
+                                                                 (adminSignupForm.controls['distritoUsuario'].dirty || 
+                                                                  adminSignupForm.controls['distritoUsuario'].touched) , 
+                                                    'is-valid':   adminSignupForm.controls['distritoUsuario'].valid}"/>
+
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['distritoUsuario'].hasError('required')">
+                                                        No puede dejar este campo vacío
+                                                    </span>
+                                                </div>
+                                                <div class="invalid-feedback">
+                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['distritoUsuario'].hasError('maxlength')">
+                                                        Debe contener como maximo 50 caracteres
+                                                    </span>
+                                                </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="userpassword" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Contraseña</label>
+                                            <input type="password" class="form-control" id="userpassword" formControlName="passwordUsuario"
+                                                placeholder="Ingrese la contraseña deseada" 
+                                                [ngClass]="{
+                                                    'is-invalid': adminSignupForm.controls['passwordUsuario'].invalid && 
+                                                                  (adminSignupForm.controls['passwordUsuario'].dirty || 
+                                                                  adminSignupForm.controls['passwordUsuario'].touched) , 
+                                                      'is-valid': adminSignupForm.controls['passwordUsuario'].valid}"/>
+
+                                                      <div class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('required')">
+                                                            No puede dejar este campo vacío
+                                                        </span>
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('minlength')">
+                                                            Debe contener al menos 8 caracteres
+                                                        </span>
+                                                    </div> 
+                                                    <div class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('passwordnumber')">
+                                                            Debe contener al menos un número
+                                                        </span>
+                                                    </div> 
+                                                    <div class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('passworduppercase')">
+                                                            Debe contener al menos una letra mayúscula
+                                                        </span>
+                                                    </div> 
+                                                    <div class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('passwordsmallcase')">
+                                                            Debe contener al menos una letra minúscula
+                                                        </span>
+                                                    </div>
+                                                    <div class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('passwordspecialcharacter')">
+                                                            Debe contener al menos un carácter especial
+                                                        </span>
+                                                    </div>
+                                        </div>
+
+                                        <div *ngIf="this.alert" class="alert alert-danger" role="alert">
+                                            {{message}}
+                                        </div>
+                                        <!--
+                                        <div
+                                            class="custom-control custom-checkbox custom-checkbox-primary custom-control-inline mr-4 pr-3">
+                                            <input type="checkbox" class="custom-control-input" id="defaultInline4" />
+                                            <label class="custom-control-label f-16" for="defaultInline4">Recuérdame</label>
+                                        </div>
+                                        -->
+                                        <div class="mt-3">
+                                            <button type="submit" class="btn btn-primary btn-block text-uppercase" [disabled]="!adminSignupForm.valid">Regístrate</button>
+                                        </div>
+
+                                        <div class="mt-4 mb-0 text-center">
+                                            <p class="mb-0">¿Tienes una cuenta? <a href="login.html"
+                                                    class="text-info">¡Logueate!</a></p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</body>
+
+</html>

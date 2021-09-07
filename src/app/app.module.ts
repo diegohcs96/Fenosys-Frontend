@@ -1,26 +1,32 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { authInterceptorProviders } from './util/auth.interceptor';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { IndexModule } from './pages/index/index.module';
-import { SigninModule } from './pages/signin/signin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { AdminRequestComponent } from './pages/master/admin-request/admin-request.component';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+
+import { IndexModule } from './pages/index/index.module';
+import { SigninModule } from './pages/signin/signin.module';
+import { SignupModule } from './pages/signup/signup.module'
+import { ProfileModule } from './pages/profile/profile.module';
+import { ResetPasswordModule } from './pages/reset-password/reset-password.module'
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminRequestComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IndexModule,
     SigninModule,
+    SignupModule,
+    ProfileModule,
+    ResetPasswordModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,

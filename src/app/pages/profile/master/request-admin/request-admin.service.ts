@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { GlobalUrl } from 'src/app/util/global-url';
 import { Observable } from 'rxjs';
+import { GlobalUrl } from 'src/app/util/global-url';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -10,21 +10,21 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class AdminRequestService {
 
-  private API_signupadminRequest = GlobalUrl.BASE_URL + 'api/admin/signup_request';
+export class RequestAdminService {
+  
+  private API_URL = GlobalUrl.BASE_URL + 'api/admin/signup_request';
 
   constructor(private http: HttpClient) { }
-  
-  SignupAdminRequest(signupadminRequest: any): Observable<any> {
+
+  PasswordRequest(restorePasswordRequest: any): Observable<any> {
     
     return this.http.post(
-      this.API_signupadminRequest,
-      signupadminRequest,
+      this.API_URL,
+      restorePasswordRequest,
       httpOptions
     )
   }
+  
+  
 }
-
-
-
