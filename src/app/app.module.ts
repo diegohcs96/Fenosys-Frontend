@@ -9,10 +9,12 @@ import { SigninModule } from './pages/signin/signin.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { AdminRequestComponent } from './pages/master/admin-request/admin-request.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    AdminRequestComponent
   ],
   imports: [
     BrowserModule,
