@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { TokenStorageService } from 'src/app/util/token-storage.service';
+import { CustomValidators } from '../../tools/custom-validators';
 import { SigninInterface } from '../signin-interface';
 import { SigninService } from '../signin.service';
 
@@ -13,6 +14,8 @@ import { SigninService } from '../signin.service';
 export class SigninAdminComponent implements OnInit {
 
   admin_logged: any;
+  alert = false;
+  message: any;
 
   constructor(private tokenstorageService: TokenStorageService,
     private signinService: SigninService,
@@ -23,10 +26,22 @@ export class SigninAdminComponent implements OnInit {
 
   public signinadminForm = this.fb.group({
 
-    usernameUsuario: new FormControl('', Validators.required), 
+    usernameUsuario: new FormControl('', 
+    Validators.required),     
 
-    passwordUsuario: new FormControl('', Validators.required)
+    passwordUsuario: new FormControl('', Validators.compose([
+      Validators.required,
+      Validators.minLength(8),
+      CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
+      CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
+      CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
+      CustomValidators.patternValidator(/[@#$:\^%&]/, {passwordspecialcharacter: true})
+    ])),
   });
+
+  AlertDefault() {
+    this.alert = false;
+  }
 
   SigninAdmin(): void {
 
@@ -45,6 +60,8 @@ export class SigninAdminComponent implements OnInit {
         console.log(data);       
       },
       err => {
+        this.alert = true;
+        this.message = err.error.message;
         console.log(err);
       }
     );

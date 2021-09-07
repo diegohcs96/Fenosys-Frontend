@@ -3,6 +3,7 @@ import { TokenStorageService } from 'src/app/util/token-storage.service';
 import { SigninService } from '../signin.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { SigninInterface } from '../signin-interface';
+import { CustomValidators } from '../../tools/custom-validators';
 
 @Component({
   selector: 'app-signin-master',
@@ -13,6 +14,8 @@ import { SigninInterface } from '../signin-interface';
 export class SigninMasterComponent implements OnInit {
 
   master_logged: any;
+  alert = false;
+  message: any;
 
   constructor(private tokenstorageService: TokenStorageService,
               private signinService: SigninService,
@@ -23,10 +26,22 @@ export class SigninMasterComponent implements OnInit {
 
   public signinmasterForm = this.fb.group({
 
-    usernameUsuario: new FormControl('', Validators.required), 
+    usernameUsuario: new FormControl('', 
+    Validators.required),     
 
-    passwordUsuario: new FormControl('', Validators.required)
+    passwordUsuario: new FormControl('', Validators.compose([
+      Validators.required,
+      Validators.minLength(8),
+      CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
+      CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
+      CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
+      CustomValidators.patternValidator(/[@#$:\^%&]/, {passwordspecialcharacter: true})
+    ])),
   });
+
+  AlertDefault() {
+    this.alert = false;
+  }
 
   SigninMaster(): void {
 
@@ -46,6 +61,8 @@ export class SigninMasterComponent implements OnInit {
         window.location.href='/request/admin';
       },
       err => {
+        this.alert = true;
+        this.message = err.error.message;
         console.log(err);
       }
     );
