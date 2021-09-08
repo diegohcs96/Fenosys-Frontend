@@ -1,4 +1,4 @@
-
+var calculate = document.getElementById("pass");
 // Loader
 $(window).on('load', function() {
     $('.status').fadeOut();
@@ -19,4 +19,4 @@ $.fn.backButton = function() {
     }
   }
   
-  $('.back-button').backButton();
+$('.back-button').backButton();

@@ -8,8 +8,7 @@ import { CustomValidators } from '../../tools/custom-validators';
 @Component({
   selector: 'app-signin-master',
   templateUrl: './signin-master.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class SigninMasterComponent implements OnInit {
 

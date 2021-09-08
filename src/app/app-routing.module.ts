@@ -37,7 +37,6 @@ const routes: Routes = [
 
    //Profile//
   { path: 'profile/admin', component: AdminComponent, data: { title: 'Perfil Administrador – Fenología' } },
-
   { path: 'profile/agricultor', component: AgricultorComponent, data: { title: 'Perfil Agricultor – Fenología' } },
   { path: 'profile/maestro', component: MasterComponent, data: { title: 'Perfil Maestro – Fenología' } },
 

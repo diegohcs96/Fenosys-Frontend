@@ -8,8 +8,7 @@ import { SigninService } from '../signin.service';
 @Component({
   selector: 'app-signin-admin',
   templateUrl: './signin-admin.component.html',
-  styles: [
-  ]
+  styles: []
 })
 export class SigninAdminComponent implements OnInit {
 
