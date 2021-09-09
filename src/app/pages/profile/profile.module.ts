@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AdminProfileComponent } from './admin-profile/admin-profile.component';
-import { AgricultorProfileComponent } from './agricultor-profile/agricultor-profile.component';
+import { ProfileAdminComponent } from './profile-admin/profile-admin.component';
+import { ProfileAgricultorComponent } from './profile-agricultor/profile-agricultor.component';
 
 @NgModule({
   declarations: [
-    AdminProfileComponent,
-    AgricultorProfileComponent
+    ProfileAdminComponent,
+    ProfileAgricultorComponent
   ],
   imports: [
     CommonModule,
