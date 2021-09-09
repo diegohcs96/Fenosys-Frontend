@@ -12,6 +12,7 @@ import { SigninModule } from './pages/signin/signin.module';
 import { SignupModule } from './pages/signup/signup.module'
 import { ProfileModule } from './pages/profile/profile.module';
 import { ResetPasswordModule } from './pages/reset-password/reset-password.module'
+import { MasterModule } from './pages/master/master.module';
 
 
 
@@ -26,6 +27,7 @@ import { ResetPasswordModule } from './pages/reset-password/reset-password.modul
     SigninModule,
     SignupModule,
     ProfileModule,
+    MasterModule,
     ResetPasswordModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

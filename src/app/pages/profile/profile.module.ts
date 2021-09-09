@@ -1,20 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MasterComponent } from './master/master.component';
-import { RequestAdminComponent } from './master/request-admin/request-admin.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AgricultorComponent } from './agricultor/agricultor.component';
-import { AdminComponent } from './admin/admin.component';
-
-
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { AgricultorProfileComponent } from './agricultor-profile/agricultor-profile.component';
 
 @NgModule({
   declarations: [
-    MasterComponent,
-    RequestAdminComponent,
-    AgricultorComponent,
-    AdminComponent,
-    
+    AdminProfileComponent,
+    AgricultorProfileComponent
   ],
   imports: [
     CommonModule,

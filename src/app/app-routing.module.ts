@@ -12,15 +12,15 @@ import { SigninMasterComponent } from './pages/signin/signin-master/signin-maste
 //Signup
 import { SignupAdminComponent } from './pages/signup/signup-admin/signup-admin.component'
 import { SignupAgricultorComponent } from './pages/signup/signup-agricultor/signup-agricultor.component'
-import { RequestAdminComponent } from './pages/profile/master/request-admin/request-admin.component'
+import { AdminRequestComponent } from './pages/master/admin-request/admin-request.component';
 
 //Request Password
 import { RequestPasswordComponent } from './pages/reset-password/request-password/request-password.component'
+import { AdminProfileComponent } from './pages/profile/admin-profile/admin-profile.component';
+import { AgricultorProfileComponent } from './pages/profile/agricultor-profile/agricultor-profile.component';
 
 //Profile
-import { MasterComponent } from './pages/profile/master/master.component';
-import { AgricultorComponent } from './pages/profile/agricultor/agricultor.component';
-import { AdminComponent } from './pages/profile/admin/admin.component';
+
 
 const routes: Routes = [
   { path: '', component: IndexComponent, data: { title: 'Fenosys' } },
@@ -30,19 +30,18 @@ const routes: Routes = [
   { path: 'signin/admin', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Fenosys' } },
   { path: 'signin/agricultor', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Fenosys' } },
 
-  //Inicio Signup// /
-  { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Fenología' } },
-  { path: 'signup/agricultor', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenología' } },
-  { path: 'request/admin', component: RequestAdminComponent, data: { title: 'Permiso Administrador – Fenología' } },
+  //Inicio Signup//
+  { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Permiso Administrador – Fenosys' } },
+  { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Fenosys' } },
+  { path: 'signup/agricultor', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenosys' } },
+
 
    //Profile//
-  { path: 'profile/admin', component: AdminComponent, data: { title: 'Perfil Administrador – Fenología' } },
-
-  { path: 'profile/agricultor', component: AgricultorComponent, data: { title: 'Perfil Agricultor – Fenología' } },
-  { path: 'profile/maestro', component: MasterComponent, data: { title: 'Perfil Maestro – Fenología' } },
+  { path: 'profile/admin', component: AdminProfileComponent, data: { title: 'Perfil Administrador – Fenosys' } },
+  { path: 'profile/agricultor', component: AgricultorProfileComponent, data: { title: 'Perfil Agricultor – Fenosys' } },
 
   //Reset Password//
-  { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Fenología' } },
+  { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Fenosys' } },
   
 
 ];
