@@ -1,21 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { RequestAdminService } from './request-admin.service';
+import { AdminRequestService } from './admin-request.service';
 import { TokenStorageService } from 'src/app/util/token-storage.service';
 
 @Component({
-  selector: 'app-request-admin',
-  templateUrl: './request-admin.component.html',
+  selector: 'app-admin-request',
+  templateUrl: './admin-request.component.html',
   styleUrls: []
 })
 
-export class RequestAdminComponent implements OnInit {
+export class AdminRequestComponent implements OnInit {
   
   passwordrequestData: any;
   currentReclutador: any;
   currentToken: any;
 
-  constructor(private requestAdmin: RequestAdminService,
+  constructor(private requestAdmin: AdminRequestService,
               private fb: FormBuilder,
               private tokenService:TokenStorageService) { }
 

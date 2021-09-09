@@ -11,7 +11,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class RequestAdminService {
+export class AdminRequestService {
   
   private API_URL = GlobalUrl.BASE_URL + 'api/admin/signup_request';
 
