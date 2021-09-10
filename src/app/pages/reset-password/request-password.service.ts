@@ -15,7 +15,6 @@ export class RequestPasswordService {
 
   private API_URL = GlobalUrl.BASE_URL + 'api/restart_password/send';
   private API_URL1 = GlobalUrl.BASE_URL + 'api';
-  private BASE_URL = GlobalUrl.BASE_URL + 'api/password_restart_gateway';
   constructor(private http: HttpClient) { }
 
   SendUrlPasswordReset(passwordreset: PasswordRequest): Observable<any> {
@@ -36,8 +35,4 @@ export class RequestPasswordService {
       );
   }
 
-  GetPasswordUpdateTemplate(): Observable<any> {
-    
-    return this.http.get(`${this.BASE_URL}`);
-  }
 }
