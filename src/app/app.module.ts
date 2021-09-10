@@ -13,6 +13,7 @@ import { SignupModule } from './pages/signup/signup.module'
 import { ProfileModule } from './pages/profile/profile.module';
 import { ResetPasswordModule } from './pages/reset-password/reset-password.module'
 import { MasterModule } from './pages/master/master.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -35,7 +36,8 @@ import { MasterModule } from './pages/master/master.module';
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    })
+    }),
+    NgbModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
