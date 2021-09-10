@@ -11,9 +11,14 @@ import { TokenStorageService } from 'src/app/util/token-storage.service';
 
 export class AdminRequestComponent implements OnInit {
   
-  passwordrequestData: any;
   currentReclutador: any;
   currentToken: any;
+
+  message: any;
+  passwordrequestData: any;
+
+  alert = false;
+  alertCorrecto = false;
 
   constructor(private requestAdmin: AdminRequestService,
               private fb: FormBuilder,
@@ -31,6 +36,11 @@ export class AdminRequestComponent implements OnInit {
     ]))
   })
   
+  AlertDefault() {
+    this.alert = false;
+    this.alertCorrecto = false;
+  }
+  
   PasswordResetRequest(): void{
 
     var passwordRequest: any = {
@@ -39,12 +49,15 @@ export class AdminRequestComponent implements OnInit {
 
     this.requestAdmin.PasswordRequest(passwordRequest).subscribe(
       data => {
-        this.passwordrequestData = data;
+        this.alertCorrecto = true;
+        this.passwordrequestData = data.message;
         console.log(this.passwordrequestData);
 
       } ,    
       err => {
-      console.log(err);       
+        this.alert = true;
+        this.message = err.error.message;
+        console.log(err);       
       } 
     )
   }
