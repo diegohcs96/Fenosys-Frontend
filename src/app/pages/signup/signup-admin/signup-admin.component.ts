@@ -27,8 +27,11 @@ export class SignupAdminComponent implements OnInit {
 
   ngOnInit(): void {
 
-   
+    
   }
+
+
+
 
   public adminSignupForm = this.fb.group({
 
@@ -100,9 +103,13 @@ export class SignupAdminComponent implements OnInit {
 
   SignUpAdmin() : void{
 
-    this.token = location.href.slice(35); 
+    //local
+    //this.token = location.href.slice(35); 
+    //producción
+    this.token = location.href.slice(43); 
+
     console.log(this.token)
-    
+
     var admin: SignupAdmin = {
       nombreUsuario : this.adminSignupForm.controls['nombreUsuario'].value,
       apellidoUsuario : this.adminSignupForm.controls['apellidoUsuario'].value,
