@@ -18,7 +18,7 @@ import { AdminRequestComponent } from './pages/master/admin-request/admin-reques
 import { RequestPasswordComponent } from './pages/reset-password/request-password/request-password.component'
 import { ProfileAdminComponent } from './pages/profile/profile-admin/profile-admin.component';
 import { ProfileAgricultorComponent } from './pages/profile/profile-agricultor/profile-agricultor.component';
-import { LoadRequestComponent } from './pages/reset-password/load-request/load-request.component';
+import { UpdatePasswordComponent } from './pages/reset-password/update-password/update-password.component';
 
 
 //Profile
@@ -44,7 +44,7 @@ const routes: Routes = [
 
   //Reset Password//
   { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Fenosys' } },
-  { path: 'password/restart/:token', component: LoadRequestComponent, data: { title: 'Recuperar Contraseña – Fenosys' } },
+  { path: 'password/restart/:token', component: UpdatePasswordComponent, data: { title: 'Recuperar Contraseña – Fenosys' } },
 
 ];
 

@@ -10,7 +10,7 @@ export const GlobalUrl = Object.freeze({
     BASE_URL: 'https://fenosys-backend.herokuapp.com/'
 
     //LOCALHOST URL
-    BASE_URL: 'http://localhost:8080/'
+    //BASE_URL: 'http://localhost:8080/'
 
 })
 
