@@ -449,6 +449,9 @@ hr {
 #userpassword{
   border-radius: 15px;
 }
+#username{
+  border-radius: 15px;
+}
 .form-group{
   margin-top: -2.5%;
 }
