@@ -25,26 +25,26 @@ import { UpdatePasswordComponent } from './pages/reset-password/update-password/
 
 
 const routes: Routes = [
-  { path: '', component: IndexComponent, data: { title: 'Fenosys' } },
+  { path: '', component: IndexComponent, data: { title: 'Dessmo' } },
 
   //Inicio Signin//
-  { path: 'signin/master', component: SigninMasterComponent, data: { title: 'Iniciar Sesión Master – Fenosys' } },
-  { path: 'signin/admin', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Fenosys' } },
-  { path: 'signin/agricultor', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Fenosys' } },
+  { path: 'signin/master', component: SigninMasterComponent, data: { title: 'Iniciar Sesión Master – Dessmo' } },
+  { path: 'signin/admin', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Dessmo' } },
+  { path: 'signin/usuario', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Dessmo' } },
 
   //Inicio Signup//
-  { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Permiso Administrador – Fenosys' } },
-  { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Fenosys' } },
-  { path: 'signup/agricultor', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenosys' } },
+  { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Permiso Administrador – Dessmo' } },
+  { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Dessmo' } },
+  { path: 'signup/usuario', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Dessmo' } },
 
 
    //Profile//
-  { path: 'profile/admin', component: ProfileAdminComponent, data: { title: 'Perfil Administrador – Fenosys' } },
-  { path: 'profile/agricultor', component: ProfileAgricultorComponent, data: { title: 'Perfil Agricultor – Fenosys' } },
+  { path: 'profile/admin', component: ProfileAdminComponent, data: { title: 'Perfil Administrador – Dessmo' } },
+  { path: 'profile/usuario', component: ProfileAgricultorComponent, data: { title: 'Perfil Agricultor – Dessmo' } },
 
   //Reset Password//
-  { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Fenosys' } },
-  { path: 'password/restart/:token', component: UpdatePasswordComponent, data: { title: 'Recuperar Contraseña – Fenosys' } },
+  { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Dessmo' } },
+  { path: 'password/restart/:token', component: UpdatePasswordComponent, data: { title: 'Recuperar Contraseña – Dessmo' } },
 
 ];
 
