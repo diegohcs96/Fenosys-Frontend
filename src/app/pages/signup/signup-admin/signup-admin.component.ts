@@ -75,7 +75,7 @@ export class SignupAdminComponent implements OnInit {
       CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
       CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
       CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
-      CustomValidators.patternValidator(/[@#$:\^%&]/, {passwordspecialcharacter: true})
+      CustomValidators.patternValidator(/[@#*$:\^%&]/, {passwordspecialcharacter: true})
     ])),    
      
   });

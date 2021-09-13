@@ -40,7 +40,7 @@ export class UpdatePasswordComponent implements OnInit {
       CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
       CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
       CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
-      CustomValidators.patternValidator(/[@#$:\^%&]/, {passwordspecialcharacter: true})
+      CustomValidators.patternValidator(/[@#*$:\^%&]/, {passwordspecialcharacter: true})
     ])),
     confirmcontrasena: new FormControl('')
   }, { validator: CustomValidators.passwordMatchValidator("contrasena", "confirmcontrasena") })
