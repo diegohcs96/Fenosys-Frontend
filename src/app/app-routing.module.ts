@@ -25,26 +25,26 @@ import { UpdatePasswordComponent } from './pages/reset-password/update-password/
 
 
 const routes: Routes = [
-  { path: '', component: IndexComponent, data: { title: 'Dessmo' } },
+  { path: '', component: IndexComponent, data: { title: 'Fenosis' } },
 
   //Inicio Signin//
-  { path: 'signin/master', component: SigninMasterComponent, data: { title: 'Iniciar Sesión Master – Dessmo' } },
-  { path: 'signin/admin', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Dessmo' } },
-  { path: 'signin/usuario', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Dessmo' } },
+  { path: 'signin/master', component: SigninMasterComponent, data: { title: 'Iniciar Sesión Master – Fenosis' } },
+  { path: 'signin/admin', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Fenosis' } },
+  { path: 'signin/usuario', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Fenosis' } },
 
   //Inicio Signup//
-  { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Permiso Administrador – Dessmo' } },
-  { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Dessmo' } },
-  { path: 'signup/usuario', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Dessmo' } },
+  { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Permiso Administrador – Fenosis' } },
+  { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Fenosis' } },
+  { path: 'signup/usuario', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenosis' } },
 
 
    //Profile//
-  { path: 'profile/admin', component: ProfileAdminComponent, data: { title: 'Perfil Administrador – Dessmo' } },
-  { path: 'profile/usuario', component: ProfileAgricultorComponent, data: { title: 'Perfil Agricultor – Dessmo' } },
+  { path: 'profile/admin', component: ProfileAdminComponent, data: { title: 'Perfil Administrador – Fenosis' } },
+  { path: 'profile/usuario', component: ProfileAgricultorComponent, data: { title: 'Perfil Agricultor – Fenosis' } },
 
   //Reset Password//
-  { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Dessmo' } },
-  { path: 'password/restart/:token', component: UpdatePasswordComponent, data: { title: 'Recuperar Contraseña – Dessmo' } },
+  { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Fenosis' } },
+  { path: 'password/restart/:token', component: UpdatePasswordComponent, data: { title: 'Recuperar Contraseña – Fenosis' } },
 
 ];
 
