@@ -27,12 +27,16 @@
         </div>
     </div>
 
+
+    
+
     <div class="contain-box">
         <div class="home-btn">
             <a href="" class="back-button text-primary h5"><i class="mdi mdi-arrow-left mr-1"></i> Retroceder</a>
         </div>
         <div class="home-center">
             <div class="home-desc-center">
+                <!--
                 <div class="container">
                     <div class="row justify-content-center align-items center">
                         <div class="col-lg-6">
@@ -195,8 +199,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="nombres" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Nombre de Usuario</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" placeholder="Ingrese un nombre de usuario para la cuenta" formControlName="usernameUsuario" 
+                                            <label for="nombres" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Usuario</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" placeholder="Ingrese un usuario para su cuenta" formControlName="usernameUsuario" 
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['usernameUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['usernameUsuario'].dirty || 
@@ -297,10 +301,50 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
+
+                <select name="FilterByPais" [(ngModel)]="FilterByPais">
+                    <option value="" disabled selected>
+                        Seleccione un país 
+                    </option>
+                    <option  *ngFor="let p of Pais" value="{{p.idPais}}">
+                        {{p.nombrePais}} 
+                    </option>        
+                </select>              
+                
+                <br>
+
+                <select name="FilterByDepartamento" [(ngModel)]="FilterByDepartamento" >
+                    <option disabled>
+                        Seleccione un Departamento 
+                    </option>
+                    <option *ngFor="let dep of Departamento | departamento:FilterByPais" value="{{dep.idDepartamento}}"> {{dep.nombreDepartamento}} </option>       
+                </select>
+
+                <br>
+
+                <select name="FilterByProvincia" [(ngModel)]="FilterByProvincia">
+                    <option disabled >
+                        Seleccione una Provincia 
+                    </option>
+                    <option *ngFor="let prov of Provincia | provincia:FilterByDepartamento" value="{{prov.idProvincia}}" > {{prov.nombreProvincia}} </option>       
+                </select>
+
+                <br>
+
+                <select >
+                    <option disabled>
+                        Seleccione un Distrito 
+                    </option>
+                    <option *ngFor="let distr of Distrito | distrito:FilterByProvincia" value="{{distr.idDistrito}}"> {{distr.nombreDistrito}} </option>       
+                </select>
+                
             </div>
         </div>
     </div>
+
+
+    
 
     
 </body>

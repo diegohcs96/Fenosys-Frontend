@@ -23,59 +23,6 @@ export class IndexComponent implements OnInit {
   }
 
 
-  getPais(): void {
-    
-    this.indexService.getPais().subscribe(
-      data => {       
-        
-
-      },
-      err => {
-        this.message = err.error.message;
-        console.log(err);
-      }
-    );
-  }
-
-  getDepartamento(): void {
-    
-    this.indexService.getDepartamentos().subscribe(
-      data => {      
-
-      },
-      err => {
-        this.message = err.error.message;
-        console.log(err);
-      }
-    );
-  }
-
-  getProvincia(): void {
-    
-    this.indexService.getProvincias().subscribe(
-      data => {       
-        console.log(data);       
-      },
-      err => {
-        this.message = err.error.message;
-        console.log(err);
-      }
-    );
-  }
-
-  getDistrito(): void {
-    
-    this.indexService.getDistritos().subscribe(
-      data => {       
-        console.log(data);       
-      },
-      err => {
-        this.message = err.error.message;
-        console.log(err);
-      }
-    );
-  }
-
 
 
 }

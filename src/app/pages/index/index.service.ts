@@ -26,7 +26,7 @@ export class IndexService {
       this.API_PAISES);
   }
 
-  getDepartamentos(): Observable<any> {
+  getDepartamentos(): any {
     return this.http.get(
       this.API_DEPARTAMENTOS);
   }

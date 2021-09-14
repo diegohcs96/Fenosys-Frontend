@@ -15,6 +15,12 @@ export class SignupAgricultorService {
 
   private API_agricultor = GlobalUrl.BASE_URL + 'api/agricultor/signup';
 
+  private API_PAISES = GlobalUrl.BASE_URL + 'api/ubicacion/show/paises';
+  private API_DEPARTAMENTOS = GlobalUrl.BASE_URL + 'api/ubicacion/show/departamentos';
+  private API_PROVINCIAS = GlobalUrl.BASE_URL + 'api/ubicacion/show/provincias';
+  private API_DISTRITOS = GlobalUrl.BASE_URL + 'api/ubicacion/show/distritos';
+
+
   auxfotoperfil = new File([], '');
   
   constructor( private http:HttpClient ) { }
@@ -37,6 +43,26 @@ export class SignupAgricultorService {
       this.API_agricultor,
       agricultor
     );
+  }
+
+  getPais(): Observable<any> {
+    return this.http.get(
+      this.API_PAISES);
+  }
+
+  getDepartamentos(): Observable<any>  {
+    return this.http.get(
+      this.API_DEPARTAMENTOS);
+  }
+
+  getProvincias(): Observable<any> {
+    return this.http.get(
+      this.API_PROVINCIAS);
+  }
+
+  getDistritos(): Observable<any> {
+    return this.http.get(
+      this.API_DISTRITOS);
   }
 
 }
