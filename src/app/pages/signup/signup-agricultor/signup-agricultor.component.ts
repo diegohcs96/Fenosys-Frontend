@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { data } from 'jquery';
+import { data, map } from 'jquery';
 import { TokenStorageService } from 'src/app/util/token-storage.service';
 import { CustomValidators } from '../../tools/custom-validators';
 import { SignupAgricultor } from './signup-agricultor';
@@ -30,8 +30,6 @@ export class SignupAgricultorComponent implements OnInit {
   ViewDistrito = false;
 
   
-
-
   constructor(private tokenstorageService : TokenStorageService, 
               private signupAgricultorService : SignupAgricultorService, 
               private fb : FormBuilder,
@@ -39,10 +37,13 @@ export class SignupAgricultorComponent implements OnInit {
               private cd:ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    this.getPais();
+    this.getPais(); 
   }
-  
-  
+
+  onSelect(event: any): void {
+    console.log('Id ->', event.target.value);
+  }
+ 
   public agricultorSignupForm = this.fb.group({
 
     nombreUsuario: new FormControl('', Validators.compose([
@@ -59,25 +60,13 @@ export class SignupAgricultorComponent implements OnInit {
       Validators.pattern("([a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+( [a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+)*)") 
     ])), 
 
-    paisUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    paisUsuario: new FormControl('', Validators.required),
 
-    departamentoUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    departamentoUsuario: new FormControl('', Validators.required),
 
-    provinciaUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    provinciaUsuario: new FormControl('', Validators.required),
 
-    distritoUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    distritoUsuario: new FormControl('', Validators.required),
 
     emailUsuario: new FormControl('', Validators.compose([
       Validators.required,
@@ -123,9 +112,6 @@ export class SignupAgricultorComponent implements OnInit {
     var agricultor: SignupAgricultor = {
       nombreUsuario : this.agricultorSignupForm.controls['nombreUsuario'].value,
       apellidoUsuario : this.agricultorSignupForm.controls['apellidoUsuario'].value,
-      //paisUsuario : this.agricultorSignupForm.controls['paisUsuario'].value,
-      //departamentoUsuario : this.agricultorSignupForm.controls['departamentoUsuario'].value,
-      //provinciaUsuario : this.agricultorSignupForm.controls['provinciaUsuario'].value,
       iddistritoUsuario : 1,
       emailUsuario : this.agricultorSignupForm.controls['emailUsuario'].value,
       usernameUsuario : this.agricultorSignupForm.controls['usernameUsuario'].value,
@@ -153,7 +139,7 @@ export class SignupAgricultorComponent implements OnInit {
     
     this.signupAgricultorService.getPaises().subscribe(
       data => {      
-        this.Pais = data.sort((a: any, b: any) => b.idPais - a.idPais);
+        this.Pais = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
         console.log(data);
       },      
     );

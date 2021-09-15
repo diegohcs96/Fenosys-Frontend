@@ -1,11 +1,8 @@
 export interface SignupAgricultor {
-    nombreUsuario : String;
-    apellidoUsuario	: String;
-    //paisUsuario	: String;
-    //departamentoUsuario : String;
-    //provinciaUsuario : String;
-    iddistritoUsuario	: Number;
-    emailUsuario : String;
-    usernameUsuario	: String;
-    passwordUsuario	: String;
+    nombreUsuario: String;
+    apellidoUsuario: String;
+    iddistritoUsuario: Number;
+    emailUsuario: String;
+    usernameUsuario: String;
+    passwordUsuario: String;
 }
