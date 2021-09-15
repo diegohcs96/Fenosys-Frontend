@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { data } from 'jquery';
+import { data, map } from 'jquery';
 import { TokenStorageService } from 'src/app/util/token-storage.service';
 import { CustomValidators } from '../../tools/custom-validators';
 import { SignupAgricultor } from './signup-agricultor';
@@ -18,19 +18,12 @@ export class SignupAgricultorComponent implements OnInit {
   alert = false;
   message: any;
 
-  FilterByPais : any ;
- 
-  FilterByDepartamento : any;
-  FilterByProvincia : any;
-  
-  Departamento: any;
-  Pais: any;
-  Provincia: any;
-  Distrito: any;
+  Paises: any;
+  Departamentos: any;
+  Provincias: any;
+  Distritos: any;
 
   
-
-
   constructor(private tokenstorageService : TokenStorageService, 
               private signupAgricultorService : SignupAgricultorService, 
               private fb : FormBuilder,
@@ -39,18 +32,15 @@ export class SignupAgricultorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPais();
-    this.getDistrito();
     this.getDepartamento();
     this.getProvincia();
-
+    this.getDistrito();
   }
 
-  /*ngAfterContentChecked(){
-    this.cd.detectChanges();
-  }*/
-
-
-
+  onSelect(event: any): void {
+    console.log('Id ->', event.target.value);
+  }
+ 
   public agricultorSignupForm = this.fb.group({
 
     nombreUsuario: new FormControl('', Validators.compose([
@@ -67,25 +57,13 @@ export class SignupAgricultorComponent implements OnInit {
       Validators.pattern("([a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+( [a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+)*)") 
     ])), 
 
-    paisUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    paisUsuario: new FormControl('', Validators.required),
 
-    departamentoUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    departamentoUsuario: new FormControl('', Validators.required),
 
-    provinciaUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    provinciaUsuario: new FormControl('', Validators.required),
 
-    distritoUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    distritoUsuario: new FormControl('', Validators.required),
 
     emailUsuario: new FormControl('', Validators.compose([
       Validators.required,
@@ -131,9 +109,6 @@ export class SignupAgricultorComponent implements OnInit {
     var agricultor: SignupAgricultor = {
       nombreUsuario : this.agricultorSignupForm.controls['nombreUsuario'].value,
       apellidoUsuario : this.agricultorSignupForm.controls['apellidoUsuario'].value,
-      //paisUsuario : this.agricultorSignupForm.controls['paisUsuario'].value,
-      //departamentoUsuario : this.agricultorSignupForm.controls['departamentoUsuario'].value,
-      //provinciaUsuario : this.agricultorSignupForm.controls['provinciaUsuario'].value,
       iddistritoUsuario : 1,
       emailUsuario : this.agricultorSignupForm.controls['emailUsuario'].value,
       usernameUsuario : this.agricultorSignupForm.controls['usernameUsuario'].value,
@@ -161,7 +136,7 @@ export class SignupAgricultorComponent implements OnInit {
     
     this.signupAgricultorService.getPais().subscribe(
       data => {      
-        this.Pais = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
+        this.Paises = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
         console.log(data);
 
       },
@@ -176,8 +151,8 @@ export class SignupAgricultorComponent implements OnInit {
     
     this.signupAgricultorService.getDepartamentos().subscribe(
       data => {      
-        this.Departamento = data.sort((a: any, b: any) => b.nombreDepartamento - a.nombreDepartamento);
-        console.log(this.Departamento);  
+        this.Departamentos = data.sort((a: any, b: any) => b.nombreDepartamento - a.nombreDepartamento);
+        console.log(this.Departamentos);  
       }       
     );
   }
@@ -186,7 +161,7 @@ export class SignupAgricultorComponent implements OnInit {
     
     this.signupAgricultorService.getProvincias().subscribe(
       data => {   
-        this.Provincia = data.sort((a: any, b: any) => b.nombreProvincia - a.nombreProvincia);   
+        this.Provincias = data.sort((a: any, b: any) => b.nombreProvincia - a.nombreProvincia);   
         console.log(data);       
       },
       err => {
@@ -200,7 +175,7 @@ export class SignupAgricultorComponent implements OnInit {
     
     this.signupAgricultorService.getDistritos().subscribe(
       data => {  
-        this.Distrito = data.sort((a: any, b: any) => b.nombreDistrito - a.nombreDistrito);   
+        this.Distritos = data.sort((a: any, b: any) => b.nombreDistrito - a.nombreDistrito);   
         console.log(data);       
       },
       err => {

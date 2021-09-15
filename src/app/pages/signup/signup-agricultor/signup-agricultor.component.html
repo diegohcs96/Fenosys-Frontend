@@ -36,7 +36,6 @@
         </div>
         <div class="home-center">
             <div class="home-desc-center">
-                <!--
                 <div class="container">
                     <div class="row justify-content-center align-items center">
                         <div class="col-lg-6">
@@ -118,89 +117,83 @@
 
                                         <div class="form-group">
                                             <label for="pais" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Pais</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="pais" placeholder="Ingrese su Pais" formControlName="paisUsuario" 
+                                            <select class="custom-select" formControlName="paisUsuario"
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['paisUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['paisUsuario'].dirty || 
                                                               agricultorSignupForm.controls['paisUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['paisUsuario'].valid}"/>
-
+                                                'is-valid':   agricultorSignupForm.controls['paisUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona un País</option>
+                                                <option *ngFor="let pais of Paises" value={{pais.idPais}}> {{pais.nombrePais}}
+                                                </option>
+                                            </select>
                                             <div class="invalid-feedback">
                                                 <span class="text-danger" *ngIf="agricultorSignupForm.controls['paisUsuario'].hasError('required')">
-                                                    No puede dejar este campo vacío
-                                                </span>
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['paisUsuario'].hasError('maxlength')">
-                                                    Debe contener como maximo 50 caracteres
+                                                    Debe seleccionar una opción
                                                 </span>
                                             </div>
                                         </div>
+
                                         <div class="form-group">
                                             <label for="departamento" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Departamento</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="departamento" placeholder="Ingrese su Departamento" formControlName="departamentoUsuario"
+                                            <select class="custom-select" formControlName="departamentoUsuario"
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['departamentoUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['departamentoUsuario'].dirty || 
                                                               agricultorSignupForm.controls['departamentoUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['departamentoUsuario'].valid}"/>
-
+                                                'is-valid':   agricultorSignupForm.controls['departamentoUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona un Departamento</option>
+                                                <option *ngFor="let departamento of Departamentos" value={{departamento.idDepartamento}}> {{departamento.nombreDepartamento}}
+                                                </option>
+                                            </select>
                                             <div class="invalid-feedback">
                                                 <span class="text-danger" *ngIf="agricultorSignupForm.controls['departamentoUsuario'].hasError('required')">
-                                                    No puede dejar este campo vacío
+                                                    Debe seleccionar una opción
                                                 </span>
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['departamentoUsuario'].hasError('maxlength')">
-                                                    Debe contener como maximo 50 caracteres
-                                                </span>
-                                            </div>                                            
+                                            </div>                        
                                         </div>
+
                                         <div class="form-group">
                                             <label for="provincia" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Provincia</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="provincia" placeholder="Ingrese su Provincia" formControlName="provinciaUsuario"
+                                            <select class="custom-select" formControlName="provinciaUsuario" (change)="onSelect($event)"
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['provinciaUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['provinciaUsuario'].dirty || 
                                                               agricultorSignupForm.controls['provinciaUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['provinciaUsuario'].valid}"/>
-
+                                                'is-valid':   agricultorSignupForm.controls['provinciaUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona una Provincia</option>
+                                                <option *ngFor="let provincia of Provincias" value={{provincia.idProvincia}}> {{provincia.nombreProvincia}}
+                                                </option>
+                                            </select>
                                             <div class="invalid-feedback">
                                                 <span class="text-danger" *ngIf="agricultorSignupForm.controls['provinciaUsuario'].hasError('required')">
-                                                    No puede dejar este campo vacío
+                                                    Debe seleccionar una opción
                                                 </span>
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['provinciaUsuario'].hasError('maxlength')">
-                                                    Debe contener como maximo 50 caracteres
-                                                </span>
-                                            </div>
+                                            </div>                        
                                         </div>
 
                                         <div class="form-group">
                                             <label for="distrito" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Distrito</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="distrito" placeholder="Ingrese su Distrito" formControlName="distritoUsuario"
+                                            <select class="custom-select" formControlName="distritoUsuario"
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['distritoUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['distritoUsuario'].dirty || 
                                                               agricultorSignupForm.controls['distritoUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['distritoUsuario'].valid}"/>
-
+                                                'is-valid':   agricultorSignupForm.controls['distritoUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona un Distrito</option>
+                                                <option *ngFor="let distrito of Distritos" value={{distrito.idDistrito}}> {{distrito.nombreDistrito}}
+                                                </option>
+                                            </select>
                                             <div class="invalid-feedback">
                                                 <span class="text-danger" *ngIf="agricultorSignupForm.controls['distritoUsuario'].hasError('required')">
-                                                    No puede dejar este campo vacío
+                                                    Debe seleccionar una opción
                                                 </span>
-                                            </div>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['distritoUsuario'].hasError('maxlength')">
-                                                    Debe contener como maximo 50 caracteres
-                                                </span>
-                                            </div>
+                                            </div>                        
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="nombres" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Usuario</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" placeholder="Ingrese un usuario para su cuenta" formControlName="usernameUsuario" 
+                                            <label for="username" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Usuario</label>
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="username" placeholder="Ingrese su Usuario para su cuenta" formControlName="usernameUsuario" 
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['usernameUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['usernameUsuario'].dirty || 
@@ -226,7 +219,7 @@
 
                                         <div class="form-group">
                                             <label for="email" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Correo electrónico</label>
-                                            <input type="email" (input)="this.AlertDefault()" class="form-control" id="email" placeholder="Ingrese su correo electrónico" formControlName="emailUsuario"
+                                            <input type="email" (input)="this.AlertDefault()" class="form-control" id="email" placeholder="Ingrese su Correo Electrónico" formControlName="emailUsuario"
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['emailUsuario'].invalid && 
                                                               (agricultorSignupForm.controls['emailUsuario'].dirty || 
@@ -246,7 +239,7 @@
 
                                         <div class="form-group">
                                             <label for="userpassword" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Contraseña</label>
-                                            <input type="password" class="form-control" id="userpassword" placeholder="Ingrese la contraseña deseada" formControlName="passwordUsuario"
+                                            <input type="password" class="form-control" id="userpassword" placeholder="Ingrese la Contraseña deseada" formControlName="passwordUsuario"
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['passwordUsuario'].invalid && 
                                                               (agricultorSignupForm.controls['passwordUsuario'].dirty || 
@@ -301,44 +294,7 @@
                             </div>
                         </div>
                     </div>
-                </div>-->
-
-                <select name="FilterByPais" [(ngModel)]="FilterByPais">
-                    <option value="" disabled selected>
-                        Seleccione un país 
-                    </option>
-                    <option  *ngFor="let p of Pais" value="{{p.idPais}}">
-                        {{p.nombrePais}} 
-                    </option>        
-                </select>              
-                
-                <br>
-
-                <select name="FilterByDepartamento" [(ngModel)]="FilterByDepartamento" >
-                    <option disabled>
-                        Seleccione un Departamento 
-                    </option>
-                    <option *ngFor="let dep of Departamento | departamento:FilterByPais" value="{{dep.idDepartamento}}"> {{dep.nombreDepartamento}} </option>       
-                </select>
-
-                <br>
-
-                <select name="FilterByProvincia" [(ngModel)]="FilterByProvincia">
-                    <option disabled >
-                        Seleccione una Provincia 
-                    </option>
-                    <option *ngFor="let prov of Provincia | provincia:FilterByDepartamento" value="{{prov.idProvincia}}" > {{prov.nombreProvincia}} </option>       
-                </select>
-
-                <br>
-
-                <select >
-                    <option disabled>
-                        Seleccione un Distrito 
-                    </option>
-                    <option *ngFor="let distr of Distrito | distrito:FilterByProvincia" value="{{distr.idDistrito}}"> {{distr.nombreDistrito}} </option>       
-                </select>
-                
+                </div>
             </div>
         </div>
     </div>
