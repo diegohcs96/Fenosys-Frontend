@@ -36,7 +36,7 @@
         </div>
         <div class="home-center">
             <div class="home-desc-center">
-                <!--
+                
                 <div class="container">
                     <div class="row justify-content-center align-items center">
                         <div class="col-lg-6">
@@ -301,51 +301,48 @@
                             </div>
                         </div>
                     </div>
-                </div>-->
+                </div>
 
-                <select name="FilterByPais" [(ngModel)]="FilterByPais">
-                    <option value="" disabled selected>
-                        Seleccione un país 
-                    </option>
-                    <option  *ngFor="let p of Pais" value="{{p.idPais}}">
+                
+               
+                
+                <select (change)="ViewDep($event)" id="Pais">   
+                    <option value="" selected disabled> Selecciona un País </option>  
+                    <option *ngFor="let p of Pais" value="{{p.idPais}}">
                         {{p.nombrePais}} 
                     </option>        
                 </select>              
                 
-                <br>
-
-                <select name="FilterByDepartamento" [(ngModel)]="FilterByDepartamento" >
-                    <option disabled>
-                        Seleccione un Departamento 
-                    </option>
-                    <option *ngFor="let dep of Departamento | departamento:FilterByPais" value="{{dep.idDepartamento}}"> {{dep.nombreDepartamento}} </option>       
+              <br>
+                
+                <select (change)="ViewProv($event)" *ngIf="this.ViewDepartamento"> 
+                    <option value="" selected disabled> Selecciona un Departamento </option>                     
+                    <option *ngFor="let dep of Departamento" value="{{dep.idDepartamento}}"> {{dep.nombreDepartamento}} </option>       
                 </select>
 
                 <br>
 
-                <select name="FilterByProvincia" [(ngModel)]="FilterByProvincia">
-                    <option disabled >
-                        Seleccione una Provincia 
-                    </option>
-                    <option *ngFor="let prov of Provincia | provincia:FilterByDepartamento" value="{{prov.idProvincia}}" > {{prov.nombreProvincia}} </option>       
+                <select (change)="ViewDist($event)" *ngIf="this.ViewProvincia">        
+                    <option value="" selected disabled> Selecciona una Provincia </option>             
+                    <option *ngFor="let prov of Provincia " value="{{prov.idProvincia}}" > {{prov.nombreProvincia}} </option>       
                 </select>
 
                 <br>
 
-                <select >
-                    <option disabled>
-                        Seleccione un Distrito 
-                    </option>
-                    <option *ngFor="let distr of Distrito | distrito:FilterByProvincia" value="{{distr.idDistrito}}"> {{distr.nombreDistrito}} </option>       
+                <select (change)="SelectIdDistrito($event)" *ngIf="this.ViewDistrito"> 
+                    <option value="" selected disabled> Selecciona un Distrito </option>                     
+                    <option *ngFor="let distr of Distrito" value="{{distr.idDistrito}}"> {{distr.nombreDistrito}} </option>       
                 </select>
                 
+
+                
+
             </div>
         </div>
     </div>
 
 
-    
-
+   
     
 </body>
 

@@ -16,10 +16,15 @@ export class SignupAgricultorService {
   private API_agricultor = GlobalUrl.BASE_URL + 'api/agricultor/signup';
 
   private API_PAISES = GlobalUrl.BASE_URL + 'api/ubicacion/show/paises';
-  private API_DEPARTAMENTOS = GlobalUrl.BASE_URL + 'api/ubicacion/show/departamentos';
-  private API_PROVINCIAS = GlobalUrl.BASE_URL + 'api/ubicacion/show/provincias';
-  private API_DISTRITOS = GlobalUrl.BASE_URL + 'api/ubicacion/show/distritos';
+  private API_DEPARTAMENTOS = GlobalUrl.BASE_URL + 'api/ubicacion/find/departamentos/from_pais';
+  private API_PROVINCIAS = GlobalUrl.BASE_URL + 'api/ubicacion/find/provincias/from_departamento';
+  private API_DISTRITOS = GlobalUrl.BASE_URL + 'api/ubicacion/find/distritos/from_provincia';
 
+
+  
+  //ubicacion/find/departamentos/from_pais/{id}
+  //ubicacion/find/provincias/from_departamento/{id}
+  //ubicacion/find/distritos/from_provincia/{id}
 
   auxfotoperfil = new File([], '');
   
@@ -45,24 +50,27 @@ export class SignupAgricultorService {
     );
   }
 
-  getPais(): Observable<any> {
+  getPaises(): Observable<any> {
     return this.http.get(
-      this.API_PAISES);
+      this.API_PAISES);      
+  }  
+
+  getDepartamentos(id: any): Observable<any>  {
+    return this.http.get(
+      `${this.API_DEPARTAMENTOS}/${id}`
+      );
   }
 
-  getDepartamentos(): Observable<any>  {
+  getProvincias(id: any): Observable<any> {
     return this.http.get(
-      this.API_DEPARTAMENTOS);
+      `${this.API_PROVINCIAS}/${id}`
+      );
   }
 
-  getProvincias(): Observable<any> {
+  getDistritos(id: any): Observable<any> {
     return this.http.get(
-      this.API_PROVINCIAS);
-  }
-
-  getDistritos(): Observable<any> {
-    return this.http.get(
-      this.API_DISTRITOS);
+      `${this.API_DISTRITOS}/${id}`
+      );
   }
 
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+const UBICACION_KEY = 'auth-pais';
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +41,16 @@ export class TokenStorageService {
 
     return {};
   }
+
+  //UBICACIÓN
+
+  public saveIdU(idP: any): void {
+    window.localStorage.removeItem(UBICACION_KEY);
+    window.localStorage.setItem(UBICACION_KEY, idP);
+  }
+
+  public getIdU(): any | null {
+    return window.localStorage.getItem(UBICACION_KEY);
+  }
+
 }

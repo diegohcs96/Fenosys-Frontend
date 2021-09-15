@@ -30,17 +30,17 @@ const routes: Routes = [
   //Inicio Signin//
   { path: 'signin/master', component: SigninMasterComponent, data: { title: 'Iniciar Sesión Master – Fenosys' } },
   { path: 'signin/admin', component: SigninAdminComponent, data: { title: 'Iniciar Sesión Administrador – Fenosys' } },
-  { path: 'signin/usuario', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Fenosys' } },
+  { path: 'signin/agricultor', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Fenosys' } },
 
   //Inicio Signup//
   { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Permiso Administrador – Fenosys' } },
   { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Fenosys' } },
-  { path: 'signup/usuario', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenosys' } },
+  { path: 'signup/agricultor', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenosys' } },
 
 
    //Profile//
   { path: 'profile/admin', component: ProfileAdminComponent, data: { title: 'Perfil Administrador – Fenosys' } },
-  { path: 'profile/usuario', component: ProfileAgricultorComponent, data: { title: 'Perfil Agricultor – Fenosys' } },
+  { path: 'profile/agricultor', component: ProfileAgricultorComponent, data: { title: 'Perfil Agricultor – Fenosys' } },
 
   //Reset Password//
   { path: 'request/password', component: RequestPasswordComponent, data: { title: 'Recuperar Contraseña – Fenosys' } },

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { data } from 'jquery';
@@ -18,15 +18,16 @@ export class SignupAgricultorComponent implements OnInit {
   alert = false;
   message: any;
 
-  FilterByPais : any ;
- 
-  FilterByDepartamento : any;
-  FilterByProvincia : any;
-  
+  //Variables de Ubicación
   Departamento: any;
   Pais: any;
   Provincia: any;
   Distrito: any;
+  
+  //Variables para esconder ubicación Ubicación
+  ViewDepartamento = false;
+  ViewProvincia = false;
+  ViewDistrito = false;
 
   
 
@@ -39,18 +40,9 @@ export class SignupAgricultorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPais();
-    this.getDistrito();
-    this.getDepartamento();
-    this.getProvincia();
-
   }
-
-  /*ngAfterContentChecked(){
-    this.cd.detectChanges();
-  }*/
-
-
-
+  
+  
   public agricultorSignupForm = this.fb.group({
 
     nombreUsuario: new FormControl('', Validators.compose([
@@ -159,57 +151,78 @@ export class SignupAgricultorComponent implements OnInit {
    
   getPais(): void {
     
-    this.signupAgricultorService.getPais().subscribe(
+    this.signupAgricultorService.getPaises().subscribe(
       data => {      
-        this.Pais = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
+        this.Pais = data.sort((a: any, b: any) => b.idPais - a.idPais);
         console.log(data);
-
-      },
-      err => {
-        this.message = err.error.message;
-        console.log(err);
-      }
+      },      
     );
+  }  
+
+  ViewDep(idPais:any){
+
+    this.ViewDistrito = false;
+    this.ViewProvincia = false;
+
+    let id = idPais.target.value;
+   
+      this.signupAgricultorService.getDepartamentos(id).subscribe(
+        data => {      
+  
+          this.Departamento = data.sort((a: any, b: any) => a.idDepartamento - b.idDepartamento);
+          console.log('idPais =>', id)
+          console.log(this.Departamento);  
+          
+        }  
+      );      
+
+    this.ViewDepartamento = true;
   }
 
-  getDepartamento(): void {
-    
-    this.signupAgricultorService.getDepartamentos().subscribe(
-      data => {      
-        this.Departamento = data.sort((a: any, b: any) => b.nombreDepartamento - a.nombreDepartamento);
-        console.log(this.Departamento);  
-      }       
+  ViewProv(idDepartamento:any){
+    this.ViewDistrito = false;
+
+    let id = idDepartamento.target.value;
+
+    this.signupAgricultorService.getProvincias(id).subscribe(
+      data => {       
+
+        this.Provincia = data;   
+        console.log('idDepartamento =>', id)
+        console.log(this.Provincia); 
+      },      
     );
+    this.ViewProvincia = true;
+
   }
 
-  getProvincia(): void {
-    
-    this.signupAgricultorService.getProvincias().subscribe(
-      data => {   
-        this.Provincia = data.sort((a: any, b: any) => b.nombreProvincia - a.nombreProvincia);   
-        console.log(data);       
-      },
-      err => {
-        this.message = err.error.message;
-        console.log(err);
-      }
-    );
-  }
+  ViewDist(idProvincia:any){
 
-  getDistrito(): void {
-    
-    this.signupAgricultorService.getDistritos().subscribe(
+    let id = idProvincia.target.value;
+
+    this.signupAgricultorService.getDistritos(id).subscribe(
       data => {  
-        this.Distrito = data.sort((a: any, b: any) => b.nombreDistrito - a.nombreDistrito);   
-        console.log(data);       
-      },
-      err => {
-        this.message = err.error.message;
-        console.log(err);
+
+        this.Distrito = data.sort((a: any, b: any) => a.idDistrito - b.idDistrito);   
+        console.log('idProvincia =>', id)
+        console.log(this.Distrito);  
+
       }
     );
+
+    this.ViewDistrito = true;
+  }
+  
+  SelectIdDistrito(idDistrito:any){
+    let id = idDistrito.target.value;
+    console.log(id)
   }
 
+ /* ngAfterContentChecked(){
+    this.cd.detectChanges();        
+  }*/
 
+ 
+  
   
 }
