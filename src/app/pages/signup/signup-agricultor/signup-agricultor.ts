@@ -1,7 +1,7 @@
 export interface SignupAgricultor {
     nombreUsuario: String;
     apellidoUsuario: String;
-    iddistritoUsuario: Number;
+    distritoUsuario: Number;
     emailUsuario: String;
     usernameUsuario: String;
     passwordUsuario: String;

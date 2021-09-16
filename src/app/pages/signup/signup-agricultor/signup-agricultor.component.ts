@@ -19,10 +19,10 @@ export class SignupAgricultorComponent implements OnInit {
   message: any;
 
   //Variables de Ubicación
-  Departamento: any;
-  Pais: any;
-  Provincia: any;
-  Distrito: any;
+  Departamentos: any;
+  Paises: any;
+  Provincias: any;
+  Distritos: any;
   
   //Variables para esconder ubicación Ubicación
   ViewDepartamento = false;
@@ -37,10 +37,6 @@ export class SignupAgricultorComponent implements OnInit {
 
   ngOnInit(): void {
     this.getPais(); 
-  }
-
-  onSelect(event: any): void {
-    console.log('Id ->', event.target.value);
   }
  
   public agricultorSignupForm = this.fb.group({
@@ -112,7 +108,7 @@ export class SignupAgricultorComponent implements OnInit {
     var agricultor: SignupAgricultor = {
       nombreUsuario : this.agricultorSignupForm.controls['nombreUsuario'].value,
       apellidoUsuario : this.agricultorSignupForm.controls['apellidoUsuario'].value,
-      iddistritoUsuario : 1,
+      distritoUsuario : this.agricultorSignupForm.controls['distritoUsuario'].value,
       emailUsuario : this.agricultorSignupForm.controls['emailUsuario'].value,
       usernameUsuario : this.agricultorSignupForm.controls['usernameUsuario'].value,
       passwordUsuario : this.agricultorSignupForm.controls['passwordUsuario'].value,        
@@ -134,12 +130,11 @@ export class SignupAgricultorComponent implements OnInit {
   }
 
   //Ubicacion
-   
   getPais(): void {
     
     this.signupAgricultorService.getPaises().subscribe(
       data => {      
-        this.Pais = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
+        this.Paises = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
         console.log(data);
       },      
     );
@@ -155,9 +150,9 @@ export class SignupAgricultorComponent implements OnInit {
       this.signupAgricultorService.getDepartamentos(id).subscribe(
         data => {      
   
-          this.Departamento = data.sort((a: any, b: any) => a.idDepartamento - b.idDepartamento);
+          this.Departamentos = data.sort((a: any, b: any) => a.idDepartamento - b.idDepartamento);
           console.log('idPais =>', id)
-          console.log(this.Departamento);  
+          console.log(this.Departamentos);  
           
         }  
       );      
@@ -172,9 +167,9 @@ export class SignupAgricultorComponent implements OnInit {
     let id = idDepartamento.target.value;
     this.signupAgricultorService.getProvincias(id).subscribe(
       data => {       
-        this.Provincia = data;   
+        this.Provincias = data;   
         console.log('idDepartamento =>', id)
-        console.log(this.Provincia); 
+        console.log(this.Provincias); 
       },      
     );
 
@@ -191,9 +186,9 @@ export class SignupAgricultorComponent implements OnInit {
     this.signupAgricultorService.getDistritos(id).subscribe(
       data => {  
 
-        this.Distrito = data.sort((a: any, b: any) => a.idDistrito - b.idDistrito);   
+        this.Distritos = data.sort((a: any, b: any) => a.idDistrito - b.idDistrito);   
         console.log('idProvincia =>', id)
-        console.log(this.Distrito);  
+        console.log(this.Distritos);  
 
       }
     );
@@ -209,8 +204,4 @@ export class SignupAgricultorComponent implements OnInit {
  /* ngAfterContentChecked(){
     this.cd.detectChanges();        
   }*/
-
- 
-  
-  
 }

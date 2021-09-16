@@ -117,88 +117,78 @@
 
                                         <div class="form-group">
                                             <label for="pais" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Pais</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="pais" formControlName="paisUsuario"
-                                                placeholder="Ingrese su Pais" 
-                                                [ngClass]="{
-                                                    'is-invalid': adminSignupForm.controls['paisUsuario'].invalid && 
-                                                                 (adminSignupForm.controls['paisUsuario'].dirty || 
-                                                                  adminSignupForm.controls['paisUsuario'].touched) , 
-                                                    'is-valid':   adminSignupForm.controls['paisUsuario'].valid}"/>
-
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['paisUsuario'].hasError('required')">
-                                                        No puede dejar este campo vacío
-                                                    </span>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['paisUsuario'].hasError('maxlength')">
-                                                        Debe contener como maximo 50 caracteres
-                                                    </span>
-                                                </div>
+                                            <select class="custom-select" formControlName="paisUsuario" (change)="ViewDep($event)"
+                                            [ngClass]="{
+                                                'is-invalid': adminSignupForm.controls['paisUsuario'].invalid && 
+                                                             (adminSignupForm.controls['paisUsuario'].dirty || 
+                                                              adminSignupForm.controls['paisUsuario'].touched) , 
+                                                'is-valid':   adminSignupForm.controls['paisUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona un País</option>
+                                                <option *ngFor="let pais of Paises" value={{pais.idPais}}> {{pais.nombrePais}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="adminSignupForm.controls['paisUsuario'].hasError('required')">
+                                                    Debe seleccionar una opción
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
+
+                                        <div class="form-group" *ngIf="this.ViewDepartamento">
                                             <label for="departamento" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Departamento</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="departamento" formControlName="departamentoUsuario"
-                                                placeholder="Ingrese su Departamento" 
-                                                [ngClass]="{
-                                                    'is-invalid': adminSignupForm.controls['departamentoUsuario'].invalid && 
-                                                                 (adminSignupForm.controls['departamentoUsuario'].dirty || 
-                                                                  adminSignupForm.controls['departamentoUsuario'].touched) , 
-                                                    'is-valid':   adminSignupForm.controls['departamentoUsuario'].valid}"/>
-
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['departamentoUsuario'].hasError('required')">
-                                                        No puede dejar este campo vacío
-                                                    </span>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['departamentoUsuario'].hasError('maxlength')">
-                                                        Debe contener como maximo 50 caracteres
-                                                    </span>
-                                                </div>
+                                            <select class="custom-select" formControlName="departamentoUsuario" (change)="ViewProv($event)"
+                                            [ngClass]="{
+                                                'is-invalid': adminSignupForm.controls['departamentoUsuario'].invalid && 
+                                                             (adminSignupForm.controls['departamentoUsuario'].dirty || 
+                                                              adminSignupForm.controls['departamentoUsuario'].touched) , 
+                                                'is-valid':   adminSignupForm.controls['departamentoUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona un Departamento</option>
+                                                <option *ngFor="let departamento of Departamentos" value={{departamento.idDepartamento}}> {{departamento.nombreDepartamento}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="adminSignupForm.controls['departamentoUsuario'].hasError('required')">
+                                                    Debe seleccionar una opción
+                                                </span>
+                                            </div>                        
                                         </div>
-                                        <div class="form-group">
+
+                                        <div class="form-group" *ngIf="this.ViewProvincia">
                                             <label for="provincia" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Provincia</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="provincia" formControlName="provinciaUsuario"
-                                                placeholder="Ingrese su Provincia" 
-                                                [ngClass]="{
-                                                    'is-invalid': adminSignupForm.controls['provinciaUsuario'].invalid && 
-                                                                 (adminSignupForm.controls['provinciaUsuario'].dirty || 
-                                                                  adminSignupForm.controls['provinciaUsuario'].touched) , 
-                                                    'is-valid':   adminSignupForm.controls['provinciaUsuario'].valid}"/>
-
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['provinciaUsuario'].hasError('required')">
-                                                        No puede dejar este campo vacío
-                                                    </span>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['provinciaUsuario'].hasError('maxlength')">
-                                                        Debe contener como maximo 50 caracteres
-                                                    </span>
-                                                </div>
+                                            <select class="custom-select" formControlName="provinciaUsuario" (change)="ViewDist($event)" 
+                                            [ngClass]="{
+                                                'is-invalid': adminSignupForm.controls['provinciaUsuario'].invalid && 
+                                                             (adminSignupForm.controls['provinciaUsuario'].dirty || 
+                                                              adminSignupForm.controls['provinciaUsuario'].touched) , 
+                                                'is-valid':   adminSignupForm.controls['provinciaUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona una Provincia</option>
+                                                <option *ngFor="let provincia of Provincias" value={{provincia.idProvincia}}> {{provincia.nombreProvincia}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="adminSignupForm.controls['provinciaUsuario'].hasError('required')">
+                                                    Debe seleccionar una opción
+                                                </span>
+                                            </div>                        
                                         </div>
 
-                                        <div class="form-group">
+                                        <div class="form-group" *ngIf="this.ViewDistrito">
                                             <label for="distrito" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Distrito</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="distrito" formControlName="distritoUsuario"
-                                                placeholder="Ingrese su Distrito" 
-                                                [ngClass]="{
-                                                    'is-invalid': adminSignupForm.controls['distritoUsuario'].invalid && 
-                                                                 (adminSignupForm.controls['distritoUsuario'].dirty || 
-                                                                  adminSignupForm.controls['distritoUsuario'].touched) , 
-                                                    'is-valid':   adminSignupForm.controls['distritoUsuario'].valid}"/>
-
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['distritoUsuario'].hasError('required')">
-                                                        No puede dejar este campo vacío
-                                                    </span>
-                                                </div>
-                                                <div class="invalid-feedback">
-                                                    <span class="text-danger" *ngIf="adminSignupForm.controls['distritoUsuario'].hasError('maxlength')">
-                                                        Debe contener como maximo 50 caracteres
-                                                    </span>
-                                                </div>
+                                            <select class="custom-select" formControlName="distritoUsuario" (change)="SelectIdDistrito($event)"
+                                            [ngClass]="{
+                                                'is-invalid': adminSignupForm.controls['distritoUsuario'].invalid && 
+                                                             (adminSignupForm.controls['distritoUsuario'].dirty || 
+                                                              adminSignupForm.controls['distritoUsuario'].touched) , 
+                                                'is-valid':   adminSignupForm.controls['distritoUsuario'].valid}">
+                                                <option value="" selected disabled>Selecciona un Distrito</option>
+                                                <option *ngFor="let distrito of Distritos" value={{distrito.idDistrito}}> {{distrito.nombreDistrito}}
+                                                </option>
+                                            </select>
+                                            <div class="invalid-feedback">
+                                                <span class="text-danger" *ngIf="adminSignupForm.controls['distritoUsuario'].hasError('required')">
+                                                    Debe seleccionar una opción
+                                                </span>
+                                            </div>                        
                                         </div>
 
                                         <div class="form-group">
@@ -207,7 +197,7 @@
                                                 placeholder="Ingrese la contraseña deseada" 
                                                 [ngClass]="{
                                                     'is-invalid': adminSignupForm.controls['passwordUsuario'].invalid && 
-                                                                  (adminSignupForm.controls['passwordUsuario'].dirty || 
+                                                                 (adminSignupForm.controls['passwordUsuario'].dirty || 
                                                                   adminSignupForm.controls['passwordUsuario'].touched) , 
                                                       'is-valid': adminSignupForm.controls['passwordUsuario'].valid}"/>
 

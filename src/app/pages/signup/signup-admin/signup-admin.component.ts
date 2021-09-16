@@ -18,6 +18,16 @@ export class SignupAdminComponent implements OnInit {
   alert = false;
   message: any;
 
+    //Variables de Ubicación
+    Departamentos: any;
+    Paises: any;
+    Provincias: any;
+    Distritos: any;
+    
+    //Variables para esconder ubicación Ubicación
+    ViewDepartamento = false;
+    ViewProvincia = false;
+    ViewDistrito = false;
 
   constructor(private tokenstorageService : TokenStorageService, 
               private signinAdminService : SignupAdminService, 
@@ -29,9 +39,6 @@ export class SignupAdminComponent implements OnInit {
 
     
   }
-
-
-
 
   public adminSignupForm = this.fb.group({
 
@@ -49,25 +56,13 @@ export class SignupAdminComponent implements OnInit {
       Validators.pattern("([a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+( [a-zA-Z'àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð,.-]+)*)")
     ])), 
 
-    paisUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    paisUsuario: new FormControl('', Validators.required),
 
-    departamentoUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    departamentoUsuario: new FormControl('', Validators.required),
 
-    provinciaUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    provinciaUsuario: new FormControl('', Validators.required),
 
-    distritoUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.maxLength(50),
-    ])), 
+    distritoUsuario: new FormControl('', Validators.required),
 
     passwordUsuario: new FormControl('', Validators.compose([
       Validators.required,
@@ -114,13 +109,9 @@ export class SignupAdminComponent implements OnInit {
     var admin: SignupAdmin = {
       nombreUsuario : this.adminSignupForm.controls['nombreUsuario'].value,
       apellidoUsuario : this.adminSignupForm.controls['apellidoUsuario'].value,
-      paisUsuario : this.adminSignupForm.controls['paisUsuario'].value,
-      departamentoUsuario : this.adminSignupForm.controls['departamentoUsuario'].value,
-      provinciaUsuario : this.adminSignupForm.controls['provinciaUsuario'].value,
       distritoUsuario : this.adminSignupForm.controls['distritoUsuario'].value,
       passwordUsuario : this.adminSignupForm.controls['passwordUsuario'].value, 
       restoretokenUsuario: this.token || ""
- 
     }
 
     this.signinAdminService.SignUpAdmin(admin, this.subirFotoPerfil()).subscribe(
@@ -139,5 +130,73 @@ export class SignupAdminComponent implements OnInit {
     )
   }
 
+  //Ubicacion
+  getPais(): void {
+    
+    this.signinAdminService.getPaises().subscribe(
+      data => {      
+        this.Paises = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
+        console.log(data);
+      },      
+    );
+  }  
 
+  ViewDep(idPais:any){
+
+    this.ViewDistrito = false;
+    this.ViewProvincia = false;
+
+    let id = idPais.target.value;
+   
+      this.signinAdminService.getDepartamentos(id).subscribe(
+        data => {      
+  
+          this.Departamentos = data.sort((a: any, b: any) => a.idDepartamento - b.idDepartamento);
+          console.log('idPais =>', id)
+          console.log(this.Departamentos);  
+          
+        }  
+      );      
+
+    this.ViewDepartamento = true;
+  }
+
+  ViewProv(idDepartamento:any){
+    this.ViewDistrito = false;
+
+    let id = idDepartamento.target.value;
+
+    this.signinAdminService.getProvincias(id).subscribe(
+      data => {       
+
+        this.Provincias = data;   
+        console.log('idDepartamento =>', id)
+        console.log(this.Provincias); 
+      },      
+    );
+    this.ViewProvincia = true;
+
+  }
+
+  ViewDist(idProvincia:any){
+
+    let id = idProvincia.target.value;
+
+    this.signinAdminService.getDistritos(id).subscribe(
+      data => {  
+
+        this.Distritos = data.sort((a: any, b: any) => a.idDistrito - b.idDistrito);   
+        console.log('idProvincia =>', id)
+        console.log(this.Distritos);  
+
+      }
+    );
+
+    this.ViewDistrito = true;
+  }
+
+  SelectIdDistrito(idDistrito:any){
+    let id = idDistrito.target.value;
+    console.log(id)
+  }
 }
