@@ -72,5 +72,4 @@ export class SignupAgricultorService {
       `${this.API_DISTRITOS}/${id}`
       );
   }
-
 }
