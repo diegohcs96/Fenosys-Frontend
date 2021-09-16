@@ -28,8 +28,7 @@ export class SignupAgricultorComponent implements OnInit {
   ViewDepartamento = false;
   ViewProvincia = false;
   ViewDistrito = false;
-
-  
+ 
   constructor(private tokenstorageService : TokenStorageService, 
               private signupAgricultorService : SignupAgricultorService, 
               private fb : FormBuilder,
@@ -83,6 +82,7 @@ export class SignupAgricultorComponent implements OnInit {
     passwordUsuario: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(8),
+      Validators.maxLength(20),
       CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
       CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
       CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
@@ -146,12 +146,12 @@ export class SignupAgricultorComponent implements OnInit {
   }  
 
   ViewDep(idPais:any){
-
+    this.ViewDepartamento = false;
     this.ViewDistrito = false;
     this.ViewProvincia = false;
 
     let id = idPais.target.value;
-   
+
       this.signupAgricultorService.getDepartamentos(id).subscribe(
         data => {      
   
@@ -166,20 +166,22 @@ export class SignupAgricultorComponent implements OnInit {
   }
 
   ViewProv(idDepartamento:any){
-    this.ViewDistrito = false;
+    this.ViewProvincia = false;
+    this.ViewDistrito = false; 
 
     let id = idDepartamento.target.value;
-
     this.signupAgricultorService.getProvincias(id).subscribe(
       data => {       
-
         this.Provincia = data;   
         console.log('idDepartamento =>', id)
         console.log(this.Provincia); 
       },      
     );
-    this.ViewProvincia = true;
 
+      //let a = this.agricultorSignupForm.controls['provinciaUsuario'].value
+      //this.agricultorSignupForm.reset(a);
+
+    this.ViewProvincia = true;
   }
 
   ViewDist(idProvincia:any){

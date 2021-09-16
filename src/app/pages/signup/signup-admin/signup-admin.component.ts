@@ -72,6 +72,7 @@ export class SignupAdminComponent implements OnInit {
     passwordUsuario: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(8),
+      Validators.minLength(20),
       CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
       CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
       CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),

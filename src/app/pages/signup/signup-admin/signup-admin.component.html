@@ -222,6 +222,11 @@
                                                         </span>
                                                     </div> 
                                                     <div class="invalid-feedback">
+                                                        <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('maxlength')">
+                                                            Debe contener al menos 20 caracteres
+                                                        </span>
+                                                      </div> 
+                                                    <div class="invalid-feedback">
                                                         <span class="text-danger" *ngIf="adminSignupForm.controls['passwordUsuario'].hasError('passwordnumber')">
                                                             Debe contener al menos un número
                                                         </span>
