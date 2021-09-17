@@ -146,7 +146,7 @@ export class SignupAgricultorComponent implements OnInit {
       )
     } catch (error) {
       this.alert = true;
-      this.message = error;
+      this.message = 'Selecciona una opción de la lista';
       console.log(error);
     }
 
