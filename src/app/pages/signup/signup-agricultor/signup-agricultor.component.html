@@ -56,7 +56,7 @@
                                     <form name="agricultorSignupForm" [formGroup]="agricultorSignupForm" (ngSubmit)="SignUpAgricultor()">
                                         <div class="form-group">
                                             <label for="nombres" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Nombres</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" placeholder="Ingrese sus Nombres" formControlName="nombreUsuario" 
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="nombres" placeholder="Ingrese sus Nombres" formControlName="nombreUsuario" required
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['nombreUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['nombreUsuario'].dirty || 
@@ -87,7 +87,7 @@
 
                                         <div class="form-group">
                                             <label for="apellidos" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Apellidos</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="apellidos" placeholder="Ingrese sus Apellidos" formControlName="apellidoUsuario" 
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="apellidos" placeholder="Ingrese sus Apellidos" formControlName="apellidoUsuario" required
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['apellidoUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['apellidoUsuario'].dirty || 
@@ -118,85 +118,48 @@
 
                                         <div class="form-group">
                                             <label for="pais" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Pais</label>
-                                            <select (change)="ViewDep($event)" class="custom-select" formControlName="paisUsuario"
-                                            [ngClass]="{
-                                                'is-invalid': agricultorSignupForm.controls['paisUsuario'].invalid && 
-                                                             (agricultorSignupForm.controls['paisUsuario'].dirty || 
-                                                              agricultorSignupForm.controls['paisUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['paisUsuario'].valid}">
+                                            <select (change)="ViewDep($event)" class="custom-select" formControlName="paisUsuario">
                                                 <option value="" selected disabled>Selecciona un País</option>
                                                 <option *ngFor="let pais of Paises" value={{pais.idPais}}> {{pais.nombrePais}}
                                                 </option>
                                             </select>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['paisUsuario'].hasError('required')">
-                                                    Debe seleccionar una opción
-                                                </span>
-                                            </div>
+                                            
                                         </div>
 
                                         <div class="form-group" *ngIf="this.ViewDepartamento">
                                             <label for="departamento" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Departamento</label>
-                                            <select (change)="ViewProv($event)" class="custom-select" formControlName="departamentoUsuario"
-                                            [ngClass]="{
-                                                'is-invalid': agricultorSignupForm.controls['departamentoUsuario'].invalid && 
-                                                             (agricultorSignupForm.controls['departamentoUsuario'].dirty ||                                                              
-                                                              agricultorSignupForm.controls['departamentoUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['departamentoUsuario'].valid} 
-                                                                ">
+                                            <select (change)="ViewProv($event)" class="custom-select" formControlName="departamentoUsuario">
                                                 <option value="" selected disabled>Selecciona un Departamento</option>
                                                 <option *ngFor="let departamento of Departamentos" value={{departamento.idDepartamento}}> {{departamento.nombreDepartamento}}
                                                 </option>
                                             </select>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['departamentoUsuario'].hasError('required')">
-                                                    Debe seleccionar una opción
-                                                </span>
-                                            </div>                        
+                                                                   
                                         </div>
 
                                         <div class="form-group" *ngIf="this.ViewProvincia" >
                                             <label for="provincia" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Provincia</label>
-                                            <select  class="custom-select" (change)="ViewDist($event)" formControlName="provinciaUsuario" 
-                                            [ngClass]="{
-                                                'is-invalid': agricultorSignupForm.controls['provinciaUsuario'].invalid &&                                                               
-                                                             (agricultorSignupForm.controls['provinciaUsuario'].dirty ||                                                                                                                         
-                                                              agricultorSignupForm.controls['provinciaUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['provinciaUsuario'].valid}">
+                                            <select  class="custom-select" (change)="ViewDist($event)" formControlName="provinciaUsuario" >
                                                 
                                                 <option value="" selected disabled>Selecciona una Provincia</option>
                                                 <option *ngFor="let provincia of Provincias" value={{provincia.idProvincia}}> {{provincia.nombreProvincia}}
                                                 </option>
                                             </select>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['provinciaUsuario'].hasError('required')">
-                                                    Debe seleccionar una opción
-                                                </span>
-                                            </div>                        
+                                                                   
                                         </div>
 
                                         <div class="form-group" *ngIf="this.ViewDistrito" >
                                             <label for="distrito" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Distrito</label>
-                                            <select class="custom-select" formControlName="distritoUsuario" (change)="SelectIdDistrito($event)"
-                                            [ngClass]="{
-                                                'is-invalid': agricultorSignupForm.controls['distritoUsuario'].invalid && 
-                                                             (agricultorSignupForm.controls['distritoUsuario'].dirty || 
-                                                              agricultorSignupForm.controls['distritoUsuario'].touched) , 
-                                                'is-valid':   agricultorSignupForm.controls['distritoUsuario'].valid}">
+                                            <select class="custom-select" formControlName="distritoUsuario" (change)="SelectIdDistrito($event)">
                                                 <option value="" selected disabled>Selecciona un Distrito</option>
                                                 <option *ngFor="let distrito of Distritos" value={{distrito.idDistrito}}> {{distrito.nombreDistrito}}
                                                 </option>
                                             </select>
-                                            <div class="invalid-feedback">
-                                                <span class="text-danger" *ngIf="agricultorSignupForm.controls['distritoUsuario'].hasError('required')">
-                                                    Debe seleccionar una opción
-                                                </span>
-                                            </div>                        
+                                                                   
                                         </div>
 
                                         <div class="form-group">
                                             <label for="username" class="letraRegistro nombreRegistro" style="font-size: 1.4vh; font-weight: bolder;">Usuario</label>
-                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="username" placeholder="Ingrese su Usuario para su cuenta" formControlName="usernameUsuario" 
+                                            <input type="text" (input)="this.AlertDefault()" class="form-control" id="username" placeholder="Ingrese su Usuario para su cuenta" formControlName="usernameUsuario" required
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['usernameUsuario'].invalid && 
                                                              (agricultorSignupForm.controls['usernameUsuario'].dirty || 
@@ -222,7 +185,7 @@
 
                                         <div class="form-group">
                                             <label for="email" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Correo electrónico</label>
-                                            <input type="email" (input)="this.AlertDefault()" class="form-control" id="email" placeholder="Ingrese su Correo Electrónico" formControlName="emailUsuario"
+                                            <input type="email" (input)="this.AlertDefault()" class="form-control" id="email" placeholder="Ingrese su Correo Electrónico" formControlName="emailUsuario" required
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['emailUsuario'].invalid && 
                                                               (agricultorSignupForm.controls['emailUsuario'].dirty || 
@@ -242,7 +205,7 @@
 
                                         <div class="form-group">
                                             <label for="userpassword" class="letraRegistro" style="font-size: 1.4vh; font-weight: bolder;">Contraseña</label>
-                                            <input type="password" class="form-control" id="userpassword" placeholder="Ingrese la Contraseña deseada" formControlName="passwordUsuario"
+                                            <input type="password" class="form-control" id="userpassword" placeholder="Ingrese la Contraseña deseada" formControlName="passwordUsuario" required
                                             [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['passwordUsuario'].invalid && 
                                                               (agricultorSignupForm.controls['passwordUsuario'].dirty || 
@@ -292,9 +255,9 @@
 
                                         <input type="reset" value="Limpiar (:">
 
-
+                                        <!--[disabled]="!agricultorSignupForm.valid-->
                                         <div class="mt-3">
-                                            <button type="submit" class="btn btn-primary btn-block text-uppercase" [disabled]="!agricultorSignupForm.valid">Regístrate</button>
+                                            <button type="submit" class="btn btn-primary btn-block text-uppercase" >Regístrate</button>
                                         </div>
                                         <div class="mt-4 mb-0 text-center">
                                             <p class="mb-0">¿Tienes una cuenta? <a href="login.html"

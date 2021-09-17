@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { data, map } from 'jquery';
@@ -28,6 +28,12 @@ export class SignupAgricultorComponent implements OnInit {
   ViewDepartamento = false;
   ViewProvincia = false;
   ViewDistrito = false;
+
+  //Variables de Seguridad en los Option
+  idDistritoSelect:any;
+  idProvinciaSelect: any;
+  idDepartamentoSelect: any;
+  idPaisSelect: any;
  
   constructor(private tokenstorageService : TokenStorageService, 
               private signupAgricultorService : SignupAgricultorService, 
@@ -114,19 +120,36 @@ export class SignupAgricultorComponent implements OnInit {
       passwordUsuario : this.agricultorSignupForm.controls['passwordUsuario'].value,        
     }
 
-    this.signupAgricultorService.SignUpAgricultor(agricultor, this.subirFotoPerfil()).subscribe(
-      data => {     
-        console.log(data);       
+    //Brecha de Seguridad
+    if (this.agricultorSignupForm.invalid) {
+      this.alert = true;
+      this.message = 'Verifique si estan completos todos los campos'
+      return;
+    }
 
-    //this.router.navigate(['/signup/administrador']);
-      } ,    
-      err => {
-        this.alert = true;
-        this.message = err.error.message;
-        console.log(err);
-        console.log(err);       
-      }
-    )
+    try {
+      console.log(this.idDistritoSelect.value);
+      console.log(this.idDepartamentoSelect.value);
+      console.log(this.idProvinciaSelect.value);
+      this.signupAgricultorService.SignUpAgricultor(agricultor, this.subirFotoPerfil()).subscribe(
+        data => {     
+          console.log(data);       
+  
+      //this.router.navigate(['/signup/administrador']);
+        } ,    
+        err => {
+          this.alert = true;
+          this.message = err.error.message;
+          ;
+          console.log(this.message); 
+        }
+      )
+    } catch (error) {
+      this.alert = true;
+      this.message = error;
+      console.log(error);
+    }
+
   }
 
   //Ubicacion
@@ -145,14 +168,15 @@ export class SignupAgricultorComponent implements OnInit {
     this.ViewDistrito = false;
     this.ViewProvincia = false;
 
-    let id = idPais.target.value;
+    this.idPaisSelect = idPais.target.value;
 
-      this.signupAgricultorService.getDepartamentos(id).subscribe(
+      this.signupAgricultorService.getDepartamentos(this.idPaisSelect).subscribe(
         data => {      
   
           this.Departamentos = data.sort((a: any, b: any) => a.idDepartamento - b.idDepartamento);
-          console.log('idPais =>', id)
-          console.log(this.Departamentos);  
+          console.log('idPais =>', this.idPaisSelect)
+          console.log(this.Departamentos);
+          this.idDepartamentoSelect == null;  
           
         }  
       );      
@@ -164,12 +188,13 @@ export class SignupAgricultorComponent implements OnInit {
     this.ViewProvincia = false;
     this.ViewDistrito = false; 
 
-    let id = idDepartamento.target.value;
-    this.signupAgricultorService.getProvincias(id).subscribe(
+    this.idDepartamentoSelect = idDepartamento.target.value;
+    this.signupAgricultorService.getProvincias(this.idDepartamentoSelect).subscribe(
       data => {       
         this.Provincias = data;   
-        console.log('idDepartamento =>', id)
-        console.log(this.Provincias); 
+        console.log('idDepartamento =>', this.idDepartamentoSelect)
+        console.log(this.Provincias);
+        this.idProvinciaSelect == null;
       },      
     );
 
@@ -181,15 +206,16 @@ export class SignupAgricultorComponent implements OnInit {
 
   ViewDist(idProvincia:any){
 
-    let id = idProvincia.target.value;
+     this.idProvinciaSelect = idProvincia.target.value;
 
-    this.signupAgricultorService.getDistritos(id).subscribe(
+    this.signupAgricultorService.getDistritos(this.idProvinciaSelect).subscribe(
       data => {  
 
         this.Distritos = data.sort((a: any, b: any) => a.idDistrito - b.idDistrito);   
-        console.log('idProvincia =>', id)
+        console.log('idProvincia =>', this.idProvinciaSelect)
         console.log(this.Distritos);  
-
+        this.idDistritoSelect = null;
+        console.log(this.idDistritoSelect);
       }
     );
 
@@ -197,9 +223,10 @@ export class SignupAgricultorComponent implements OnInit {
   }
   
   SelectIdDistrito(idDistrito:any){
-    let id = idDistrito.target.value;
-    console.log(id)
+    this.idDistritoSelect= idDistrito.target.value;
+    console.log(this.idDistritoSelect)
   }
+  
 
  /* ngAfterContentChecked(){
     this.cd.detectChanges();        
