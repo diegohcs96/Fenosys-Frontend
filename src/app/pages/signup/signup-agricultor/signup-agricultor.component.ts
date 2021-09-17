@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit,  ComponentFactoryResolver } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { data, map } from 'jquery';
@@ -41,6 +41,7 @@ export class SignupAgricultorComponent implements OnInit {
               private router: Router,
               private cd:ChangeDetectorRef) { }
 
+ 
   ngOnInit(): void {
     this.getPais(); 
   }
@@ -188,6 +189,7 @@ export class SignupAgricultorComponent implements OnInit {
     this.ViewProvincia = false;
     this.ViewDistrito = false; 
 
+    
     this.idDepartamentoSelect = idDepartamento.target.value;
     this.signupAgricultorService.getProvincias(this.idDepartamentoSelect).subscribe(
       data => {       
@@ -198,6 +200,18 @@ export class SignupAgricultorComponent implements OnInit {
       },      
     );
 
+    this.agricultorSignupForm.controls['provinciaUsuario'].setErrors({'incorrect': true})   
+  
+
+    /*setTimeout (() => {
+      this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)
+    }, 1000);*/
+
+
+     // this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null);
+
+      //console.log(this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null))
+    
       //let a = this.agricultorSignupForm.controls['provinciaUsuario'].value
       //this.agricultorSignupForm.reset(a);
 
@@ -206,7 +220,8 @@ export class SignupAgricultorComponent implements OnInit {
 
   ViewDist(idProvincia:any){
 
-     this.idProvinciaSelect = idProvincia.target.value;
+    this.idProvinciaSelect = idProvincia.target.value;
+
 
     this.signupAgricultorService.getDistritos(this.idProvinciaSelect).subscribe(
       data => {  
@@ -216,19 +231,28 @@ export class SignupAgricultorComponent implements OnInit {
         console.log(this.Distritos);  
         this.idDistritoSelect = null;
         console.log(this.idDistritoSelect);
-      }
+      }      
+      
     );
+    setTimeout (() => {
+      this.agricultorSignupForm.controls['distritoUsuario'].setErrors({'incorrect': true})  
+    }, 100);
 
+    this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)
+
+    
+   
     this.ViewDistrito = true;
   }
   
   SelectIdDistrito(idDistrito:any){
+
     this.idDistritoSelect= idDistrito.target.value;
     console.log(this.idDistritoSelect)
   }
   
 
- /* ngAfterContentChecked(){
-    this.cd.detectChanges();        
-  }*/
+ ngAfterContentChecked(){
+    this.cd.detectChanges();
+  }
 }
