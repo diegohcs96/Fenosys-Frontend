@@ -8,6 +8,12 @@ $(window).on('load', function() {
     });
 });
 
+$("#anterior").on("click", function () {
+ $('#nuevo option').prop('selected', function() {
+    return this.defaultSelected;
+  });
+});
+
 // Boton Retroceder :V
 $.fn.backButton = function() {
     if (document.referrer !== "") {
