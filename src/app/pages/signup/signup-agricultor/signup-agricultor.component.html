@@ -165,7 +165,7 @@
                                                               agricultorSignupForm.controls['provinciaUsuario'].touched) , 
                                                 'is-valid':   agricultorSignupForm.controls['provinciaUsuario'].valid}">
                                                 <option value="" disabled>Selecciona una Provincia</option>
-                                                <option *ngFor="let provincia of Provincias" [value]=provincia.idProvincia>{{provincia.nombreProvincia}}
+                                                <option *ngFor="let provincia of Provincias" value={{provincia.idProvincia}}>{{provincia.nombreProvincia}}
                                                 </option>
                                             </select>
                                             <div class="invalid-feedback">
@@ -183,7 +183,7 @@
                                                              (agricultorSignupForm.controls['distritoUsuario'].dirty || 
                                                               agricultorSignupForm.controls['distritoUsuario'].touched) , 
                                                 'is-valid':   agricultorSignupForm.controls['distritoUsuario'].valid}">
-                                                <option value="" selected disabled>Selecciona un Distrito</option>
+                                                <option value="" selected="selected" disabled>Selecciona un Distrito</option>
                                                 <option *ngFor="let distrito of Distritos" value={{distrito.idDistrito}}> {{distrito.nombreDistrito}}
                                                 </option>
                                             </select>

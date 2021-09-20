@@ -6,6 +6,7 @@ import { TokenStorageService } from 'src/app/util/token-storage.service';
 import { CustomValidators } from '../../tools/custom-validators';
 import { SignupAgricultor } from './signup-agricultor';
 import { SignupAgricultorService } from './signup-agricultor.service';
+declare const $:any;
 
 @Component({
   selector: 'app-signup-agricultor',
@@ -177,6 +178,7 @@ export class SignupAgricultorComponent implements OnInit {
     this.ViewDistrito = false; 
 
     
+ 
     this.idDepartamentoSelect = idDepartamento.target.value;
     this.signupAgricultorService.getProvincias(this.idDepartamentoSelect).subscribe(
       data => {       
