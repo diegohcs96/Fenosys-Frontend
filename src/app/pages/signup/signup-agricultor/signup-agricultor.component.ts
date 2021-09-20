@@ -34,7 +34,9 @@ export class SignupAgricultorComponent implements OnInit {
   idProvinciaSelect: any;
   idDepartamentoSelect: any;
   idPaisSelect: any;
- 
+
+  SelectProvincia:any = ''
+  SelectDistrito: any = ''
   constructor(private tokenstorageService : TokenStorageService, 
               private signupAgricultorService : SignupAgricultorService, 
               private fb : FormBuilder,
@@ -121,17 +123,7 @@ export class SignupAgricultorComponent implements OnInit {
       passwordUsuario : this.agricultorSignupForm.controls['passwordUsuario'].value,        
     }
 
-    //Brecha de Seguridad
-    if (this.agricultorSignupForm.invalid) {
-      this.alert = true;
-      this.message = 'Verifique si estan completos todos los campos'
-      return;
-    }
-
-    try {
-      console.log(this.idDistritoSelect.value);
-      console.log(this.idDepartamentoSelect.value);
-      console.log(this.idProvinciaSelect.value);
+    
       this.signupAgricultorService.SignUpAgricultor(agricultor, this.subirFotoPerfil()).subscribe(
         data => {     
           console.log(data);       
@@ -142,14 +134,9 @@ export class SignupAgricultorComponent implements OnInit {
           this.alert = true;
           this.message = err.error.message;
           ;
-          console.log(this.message); 
         }
       )
-    } catch (error) {
-      this.alert = true;
-      this.message = 'Selecciona una opción de la lista';
-      console.log(error);
-    }
+    
 
   }
 
@@ -200,7 +187,7 @@ export class SignupAgricultorComponent implements OnInit {
       },      
     );
 
-    this.agricultorSignupForm.controls['provinciaUsuario'].setErrors({'incorrect': true})   
+  //  this.agricultorSignupForm.controls['provinciaUsuario'].setErrors({'incorrect': true})   
   
 
     /*setTimeout (() => {
@@ -214,7 +201,7 @@ export class SignupAgricultorComponent implements OnInit {
     
       //let a = this.agricultorSignupForm.controls['provinciaUsuario'].value
       //this.agricultorSignupForm.reset(a);
-
+    this.SelectProvincia = '';
     this.ViewProvincia = true;
   }
 
@@ -234,14 +221,15 @@ export class SignupAgricultorComponent implements OnInit {
       }      
       
     );
-    setTimeout (() => {
+ /*   setTimeout (() => {
       this.agricultorSignupForm.controls['distritoUsuario'].setErrors({'incorrect': true})  
     }, 100);
 
-    this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)
+    this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)*/
 
     
-   
+    this.SelectDistrito = '';
+
     this.ViewDistrito = true;
   }
   
