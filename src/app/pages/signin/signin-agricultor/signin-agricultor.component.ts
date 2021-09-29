@@ -31,14 +31,8 @@ export class SigninAgricultorComponent implements OnInit {
     usernameUsuario: new FormControl('', 
     Validators.required),     
 
-    passwordUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.minLength(8),
-      CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
-      CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
-      CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
-      CustomValidators.patternValidator(/[@#$:\^%&]/, {passwordspecialcharacter: true})
-    ])),
+    passwordUsuario: new FormControl('', 
+    Validators.required),  
   });
 
   AlertDefault() {

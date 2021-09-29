@@ -61,8 +61,8 @@ export class SignupAgricultorService {
       );
   }
 
-  getProvincias(id: any){
-    return this.http.get<any>(
+  getProvincias(id: any): Observable<any> {
+    return this.http.get(
       `${this.API_PROVINCIAS}/${id}`
       );
   }

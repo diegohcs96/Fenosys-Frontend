@@ -78,7 +78,6 @@ export class SignupAgricultorComponent implements OnInit {
       Validators.email
     ])),
 
-
     usernameUsuario: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(6),
@@ -128,8 +127,7 @@ export class SignupAgricultorComponent implements OnInit {
       this.signupAgricultorService.SignUpAgricultor(agricultor, this.subirFotoPerfil()).subscribe(
         data => {     
           console.log(data);       
-  
-      //this.router.navigate(['/signup/administrador']);
+          window.location.href = '/signin/agricultor'
         } ,    
         err => {
           this.alert = true;
