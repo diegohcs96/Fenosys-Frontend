@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TokenStorageService } from 'src/app/util/token-storage.service';
@@ -29,15 +29,23 @@ export class SignupAdminComponent implements OnInit {
     ViewProvincia = false;
     ViewDistrito = false;
 
+    //Variables de Seguridad en los Option
+    idDistritoSelect:any;
+    idProvinciaSelect: any;
+    idDepartamentoSelect: any;
+    idPaisSelect: any;
+
+    SelectProvincia:any = ''
+    SelectDistrito: any = ''
   constructor(private tokenstorageService : TokenStorageService, 
               private signinAdminService : SignupAdminService, 
               private fb : FormBuilder,
               private router: Router,
-              private tokens: TokenStorageService) { }
+              private tokens: TokenStorageService,
+              private cd:ChangeDetectorRef) { }
 
   ngOnInit(): void {
-
-    
+    this.getPais(); 
   }
 
   public adminSignupForm = this.fb.group({
@@ -67,12 +75,12 @@ export class SignupAdminComponent implements OnInit {
     passwordUsuario: new FormControl('', Validators.compose([
       Validators.required,
       Validators.minLength(8),
-      Validators.minLength(20),
+      Validators.maxLength(20),
       CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
       CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
       CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
       CustomValidators.patternValidator(/[@#*$:\^%&]/, {passwordspecialcharacter: true})
-    ])),    
+    ])), 
      
   });
 
@@ -117,10 +125,8 @@ export class SignupAdminComponent implements OnInit {
     this.signinAdminService.SignUpAdmin(admin, this.subirFotoPerfil()).subscribe(
       data => {     
 
-        //console.log("aea funco");    
-        //console.log("aea se borro");    
-
-  // this.router.navigate(['/postulante/' + this.loggedAdmin.idPostulante + '/profile']);
+        console.log(data);       
+          window.location.href = '/signin/admin'
       } ,    
       err => {
         this.alert = true;
@@ -142,18 +148,19 @@ export class SignupAdminComponent implements OnInit {
   }  
 
   ViewDep(idPais:any){
-
+    this.ViewDepartamento = false;
     this.ViewDistrito = false;
     this.ViewProvincia = false;
 
-    let id = idPais.target.value;
-   
-      this.signinAdminService.getDepartamentos(id).subscribe(
+    this.idPaisSelect = idPais.target.value;
+
+      this.signinAdminService.getDepartamentos(this.idPaisSelect).subscribe(
         data => {      
   
           this.Departamentos = data.sort((a: any, b: any) => a.idDepartamento - b.idDepartamento);
-          console.log('idPais =>', id)
-          console.log(this.Departamentos);  
+          console.log('idPais =>', this.idPaisSelect)
+          console.log(this.Departamentos);
+          this.idDepartamentoSelect == null;  
           
         }  
       );      
@@ -162,41 +169,75 @@ export class SignupAdminComponent implements OnInit {
   }
 
   ViewProv(idDepartamento:any){
-    this.ViewDistrito = false;
+    this.ViewProvincia = false;
+    this.ViewDistrito = false; 
 
-    let id = idDepartamento.target.value;
-
-    this.signinAdminService.getProvincias(id).subscribe(
+    
+ 
+    this.idDepartamentoSelect = idDepartamento.target.value;
+    this.signinAdminService.getProvincias(this.idDepartamentoSelect).subscribe(
       data => {       
-
         this.Provincias = data;   
-        console.log('idDepartamento =>', id)
-        console.log(this.Provincias); 
+        console.log('idDepartamento =>', this.idDepartamentoSelect)
+        console.log(this.Provincias);
+        this.idProvinciaSelect == null;
       },      
     );
-    this.ViewProvincia = true;
 
+  //  this.agricultorSignupForm.controls['provinciaUsuario'].setErrors({'incorrect': true})   
+  
+
+    /*setTimeout (() => {
+      this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)
+    }, 1000);*/
+
+
+     // this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null);
+
+      //console.log(this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null))
+    
+      //let a = this.agricultorSignupForm.controls['provinciaUsuario'].value
+      //this.agricultorSignupForm.reset(a);
+    this.SelectProvincia = '';
+    this.ViewProvincia = true;
   }
 
   ViewDist(idProvincia:any){
 
-    let id = idProvincia.target.value;
+    this.idProvinciaSelect = idProvincia.target.value;
 
-    this.signinAdminService.getDistritos(id).subscribe(
+
+    this.signinAdminService.getDistritos(this.idProvinciaSelect).subscribe(
       data => {  
 
         this.Distritos = data.sort((a: any, b: any) => a.idDistrito - b.idDistrito);   
-        console.log('idProvincia =>', id)
+        console.log('idProvincia =>', this.idProvinciaSelect)
         console.log(this.Distritos);  
-
-      }
+        this.idDistritoSelect = null;
+        console.log(this.idDistritoSelect);
+      }      
+      
     );
+ /*   setTimeout (() => {
+      this.agricultorSignupForm.controls['distritoUsuario'].setErrors({'incorrect': true})  
+    }, 100);
+
+    this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)*/
+
+    
+    this.SelectDistrito = '';
 
     this.ViewDistrito = true;
   }
-
+  
   SelectIdDistrito(idDistrito:any){
-    let id = idDistrito.target.value;
-    console.log(id)
+
+    this.idDistritoSelect= idDistrito.target.value;
+    console.log(this.idDistritoSelect)
+  }
+  
+
+ ngAfterContentChecked(){
+    this.cd.detectChanges();
   }
 }

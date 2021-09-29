@@ -15,11 +15,9 @@ import { ResetPasswordModule } from './pages/reset-password/reset-password.modul
 import { MasterModule } from './pages/master/master.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
-
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

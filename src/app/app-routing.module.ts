@@ -37,7 +37,6 @@ const routes: Routes = [
   { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Fenosys' } },
   { path: 'signup/agricultor', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenosys' } },
 
-
    //Profile//
   { path: 'profile/admin', component: ProfileAdminComponent, data: { title: 'Perfil Administrador – Fenosys' } },
   { path: 'profile/agricultor', component: ProfileAgricultorComponent, data: { title: 'Perfil Agricultor – Fenosys' } },
