@@ -56,7 +56,9 @@ export class SigninAdminComponent implements OnInit {
         this.tokenstorageService.saveUser(data);
         this.admin_logged = this.tokenstorageService.getUser();
 
-        console.log(data);       
+        console.log(data);
+        
+        window.location.href='/profile/admin';
       },
       err => {
         this.alert = true;

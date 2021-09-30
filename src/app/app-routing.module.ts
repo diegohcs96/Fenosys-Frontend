@@ -33,7 +33,7 @@ const routes: Routes = [
   { path: 'signin/agricultor', component: SigninAgricultorComponent, data: { title: 'Iniciar Sesión Agricultor – Fenosys' } },
 
   //Inicio Signup//
-  { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Permiso Administrador – Fenosys' } },
+  { path: 'request/admin', component: AdminRequestComponent, data: { title: 'Solicitud Administrador – Fenosys' } },
   { path: 'signup/admin/:token', component: SignupAdminComponent, data: { title: 'Registro Administrador – Fenosys' } },
   { path: 'signup/agricultor', component: SignupAgricultorComponent, data: { title: 'Registro Agricultor – Fenosys' } },
 

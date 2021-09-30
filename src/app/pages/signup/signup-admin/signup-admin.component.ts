@@ -17,26 +17,28 @@ export class SignupAdminComponent implements OnInit {
   document: any;
   alert = false;
   message: any;
+  token: any;
 
-    //Variables de Ubicación
-    Departamentos: any;
-    Paises: any;
-    Provincias: any;
-    Distritos: any;
-    
-    //Variables para esconder ubicación Ubicación
-    ViewDepartamento = false;
-    ViewProvincia = false;
-    ViewDistrito = false;
+  //Variables de Ubicación
+  Departamentos: any;
+  Paises: any;
+  Provincias: any;
+  Distritos: any;
+  
+  //Variables para esconder ubicación Ubicación
+  ViewDepartamento = false;
+  ViewProvincia = false;
+  ViewDistrito = false;
 
-    //Variables de Seguridad en los Option
-    idDistritoSelect:any;
-    idProvinciaSelect: any;
-    idDepartamentoSelect: any;
-    idPaisSelect: any;
+  //Variables de Seguridad en los Option
+  idDistritoSelect:any;
+  idProvinciaSelect: any;
+  idDepartamentoSelect: any;
+  idPaisSelect: any;
 
-    SelectProvincia:any = ''
-    SelectDistrito: any = ''
+  SelectProvincia:any = ''
+  SelectDistrito: any = ''
+  
   constructor(private tokenstorageService : TokenStorageService, 
               private signinAdminService : SignupAdminService, 
               private fb : FormBuilder,
@@ -101,15 +103,11 @@ export class SignupAdminComponent implements OnInit {
     }
   }
 
-
-
-  token = localStorage.getItem('passwordresetToken');
-
   SignUpAdmin() : void{
 
-    //local
+    //DEV
     //this.token = location.href.slice(35); 
-    //producción
+    //QA
     this.token = location.href.slice(43); 
 
     console.log(this.token)
@@ -119,14 +117,14 @@ export class SignupAdminComponent implements OnInit {
       apellidoUsuario : this.adminSignupForm.controls['apellidoUsuario'].value,
       distritoUsuario : this.adminSignupForm.controls['distritoUsuario'].value,
       passwordUsuario : this.adminSignupForm.controls['passwordUsuario'].value, 
-      restoretokenUsuario: this.token || ""
+      requesttokenUsuario: this.token || ""
     }
 
     this.signinAdminService.SignUpAdmin(admin, this.subirFotoPerfil()).subscribe(
       data => {     
 
         console.log(data);       
-          window.location.href = '/signin/admin'
+        window.location.href = '/signin/admin'
       } ,    
       err => {
         this.alert = true;
