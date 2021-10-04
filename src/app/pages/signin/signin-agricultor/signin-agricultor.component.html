@@ -80,13 +80,12 @@
                                                                  (signinagricultorForm.controls['passwordUsuario'].dirty || 
                                                                   signinagricultorForm.controls['passwordUsuario'].touched) , 
                                                       'is-valid': signinagricultorForm.controls['passwordUsuario'].valid}" />
-                        <div class="input-group-append">
-                          <span class="input-group-text" style="background-color: #3850d5;">
+                        <div class="input-group-append" (click)="toggleFieldTextType()">
+                          <a type="button" class="input-group-text" style="background-color: #3850d5;">
                             <i style="color: white;" class="fa-regular" [ngClass]="{
-                                                                'fa-eye': !fieldTextType,
-                                                                'fa-eye-slash': fieldTextType}"
-                              (click)="toggleFieldTextType()"></i>
-                          </span>
+                                                                 'fa-eye': !fieldTextType,
+                                                                 'fa-eye-slash': fieldTextType}"></i>
+                          </a>
                         </div>
                         <div class="invalid-feedback">
                           <span class="text-danger"
