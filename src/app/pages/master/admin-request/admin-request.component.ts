@@ -10,7 +10,7 @@ import { TokenStorageService } from 'src/app/util/token-storage.service';
 })
 
 export class AdminRequestComponent implements OnInit {
-  
+
   currentReclutador: any;
   currentToken: any;
 
@@ -21,27 +21,27 @@ export class AdminRequestComponent implements OnInit {
   alertCorrecto = false;
 
   constructor(private requestAdmin: AdminRequestService,
-              private fb: FormBuilder,
-              private tokenService:TokenStorageService) { }
+    private fb: FormBuilder,
+    private tokenService: TokenStorageService) { }
 
   ngOnInit(): void {
-   
+
   }
 
   public adminForm = this.fb.group({
-    
+
     emailUsuario: new FormControl('', Validators.compose([
       Validators.required,
       Validators.email
     ]))
   })
-  
+
   AlertDefault() {
     this.alert = false;
     this.alertCorrecto = false;
   }
-  
-  PasswordResetRequest(): void{
+
+  PasswordResetRequest(): void {
 
     var passwordRequest: any = {
       emailUsuario: this.adminForm.controls['emailUsuario'].value
@@ -53,14 +53,14 @@ export class AdminRequestComponent implements OnInit {
         this.passwordrequestData = data.message;
         console.log(this.passwordrequestData);
 
-      } ,    
+      },
       err => {
         this.alert = true;
         this.message = err.error.message;
-        console.log(err);       
-      } 
+        console.log(err);
+      }
     )
   }
 
-  
+
 }

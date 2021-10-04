@@ -5,7 +5,7 @@ import { SignupAgricultor } from './signup-agricultor';
 import { GlobalUrl } from 'src/app/util/global-url';
 
 const httpOptions = {
-  headers: new HttpHeaders({'Content-Type': 'application/json'})
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
 
 @Injectable({
@@ -21,25 +21,25 @@ export class SignupAgricultorService {
   private API_DISTRITOS = GlobalUrl.BASE_URL + 'api/ubicacion/find/distritos/from_provincia';
 
 
-  
+
   //ubicacion/find/departamentos/from_pais/{id}
   //ubicacion/find/provincias/from_departamento/{id}
   //ubicacion/find/distritos/from_provincia/{id}
 
   auxfotoperfil = new File([], '');
-  
-  constructor( private http:HttpClient ) { }
+
+  constructor(private http: HttpClient) { }
 
   SignUpAgricultor(usuario: SignupAgricultor, foto: File): Observable<any> {
 
-    const agricultordata = new Blob([JSON.stringify(usuario)], {type: 'application/json'})
+    const agricultordata = new Blob([JSON.stringify(usuario)], { type: 'application/json' })
 
     var agricultor: FormData = new FormData();
 
     agricultor.append('usuario', agricultordata);
 
     if (foto != null) {
-      agricultor.append('foto', foto);      
+      agricultor.append('foto', foto);
     } else {
       agricultor.append('foto', this.auxfotoperfil);
     }
@@ -52,24 +52,24 @@ export class SignupAgricultorService {
 
   getPaises(): Observable<any> {
     return this.http.get(
-      this.API_PAISES);      
-  }  
+      this.API_PAISES);
+  }
 
-  getDepartamentos(id: any): Observable<any>  {
+  getDepartamentos(id: any): Observable<any> {
     return this.http.get(
       `${this.API_DEPARTAMENTOS}/${id}`
-      );
+    );
   }
 
   getProvincias(id: any): Observable<any> {
     return this.http.get(
       `${this.API_PROVINCIAS}/${id}`
-      );
+    );
   }
 
   getDistritos(id: any): Observable<any> {
     return this.http.get(
       `${this.API_DISTRITOS}/${id}`
-      );
+    );
   }
 }

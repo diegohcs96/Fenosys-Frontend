@@ -16,24 +16,30 @@ export class SigninMasterComponent implements OnInit {
   alert = false;
   message: any;
 
+  fieldTextType: boolean | undefined;
+
   constructor(private tokenstorageService: TokenStorageService,
-              private signinService: SigninService,
-              private fb: FormBuilder) { }
+    private signinService: SigninService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
   }
 
   public signinmasterForm = this.fb.group({
 
-    usernameUsuario: new FormControl('', 
-    Validators.required),     
+    usernameUsuario: new FormControl('',
+      Validators.required),
 
     passwordUsuario: new FormControl('',
-      Validators.required),   
+      Validators.required),
   });
 
   AlertDefault() {
     this.alert = false;
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   SigninMaster(): void {
@@ -50,8 +56,8 @@ export class SigninMasterComponent implements OnInit {
         this.tokenstorageService.saveUser(data);
         this.master_logged = this.tokenstorageService.getUser();
 
-        console.log(data);       
-        window.location.href='/request/admin';
+        console.log(data);
+        window.location.href = '/request/admin';
       },
       err => {
         this.alert = true;

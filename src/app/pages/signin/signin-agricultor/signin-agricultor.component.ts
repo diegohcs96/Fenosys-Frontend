@@ -4,7 +4,6 @@ import { TokenStorageService } from 'src/app/util/token-storage.service';
 import { CustomValidators } from '../../tools/custom-validators';
 import { SigninInterface } from '../signin-interface';
 import { SigninService } from '../signin.service';
-declare const $:any; 
 
 @Component({
   selector: 'app-signin-agricultor',
@@ -17,38 +16,30 @@ export class SigninAgricultorComponent implements OnInit {
   alert = false;
   message: any;
 
+  fieldTextType: boolean | undefined;
+
   constructor(private tokenstorageService: TokenStorageService,
-              private signinService: SigninService,
-              private fb: FormBuilder) { }
+    private signinService: SigninService,
+    private fb: FormBuilder) { }
 
   ngOnInit(): void {
-    //Cargar el Jquery
-    this.SeePassword();
   }
 
   public signinagricultorForm = this.fb.group({
 
-    usernameUsuario: new FormControl('', 
-    Validators.required),     
+    usernameUsuario: new FormControl('',
+      Validators.required),
 
-    passwordUsuario: new FormControl('', 
-    Validators.required),  
+    passwordUsuario: new FormControl('',
+      Validators.required),
   });
 
   AlertDefault() {
     this.alert = false;
   }
 
-  SeePassword(){
-      $('#decrypt').on('click', function() {
-        $('#password').attr('type', function(index:any,attr:any) {
-          return attr == 'text' ? 'password' : 'text';
-        })
-      })
-  }
-
-  LoadPage(){
-    $('#start').css('cursor', 'wait');
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   SigninAgricultor(): void {
@@ -64,12 +55,9 @@ export class SigninAgricultorComponent implements OnInit {
         this.tokenstorageService.saveToken(data.token);
         this.tokenstorageService.saveUser(data);
         this.agricultor_logged = this.tokenstorageService.getUser();
-        $('#start').css('cursor', 'default');
-        console.log(data);       
-        //window.location.href='/request/admin';
+        window.location.href = '/profile/agricultor';
       },
       err => {
-        $('#start').css('cursor', 'default');
         this.alert = true;
         this.message = err.error.message;
         console.log(err);

@@ -16,6 +16,8 @@ export class SigninAdminComponent implements OnInit {
   alert = false;
   message: any;
 
+  fieldTextType: boolean | undefined;
+
   constructor(private tokenstorageService: TokenStorageService,
     private signinService: SigninService,
     private fb: FormBuilder) { }
@@ -25,21 +27,19 @@ export class SigninAdminComponent implements OnInit {
 
   public signinadminForm = this.fb.group({
 
-    usernameUsuario: new FormControl('', 
-    Validators.required),     
+    usernameUsuario: new FormControl('',
+      Validators.required),
 
-    passwordUsuario: new FormControl('', Validators.compose([
-      Validators.required,
-      Validators.minLength(8),
-      CustomValidators.patternValidator(/\d/, { passwordnumber: true }),
-      CustomValidators.patternValidator(/[A-Z]/, {passworduppercase: true}),
-      CustomValidators.patternValidator(/[a-z]/, {passwordsmallcase: true}),
-      CustomValidators.patternValidator(/[@#$:\^%&]/, {passwordspecialcharacter: true})
-    ])),
+    passwordUsuario: new FormControl('',
+      Validators.required),
   });
 
   AlertDefault() {
     this.alert = false;
+  }
+
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   SigninAdmin(): void {
@@ -57,8 +57,8 @@ export class SigninAdminComponent implements OnInit {
         this.admin_logged = this.tokenstorageService.getUser();
 
         console.log(data);
-        
-        window.location.href='/profile/admin';
+
+        window.location.href = '/profile/admin';
       },
       err => {
         this.alert = true;

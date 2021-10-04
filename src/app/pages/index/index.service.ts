@@ -7,8 +7,8 @@ import { GlobalUrl } from 'src/app/util/global-url';
   providedIn: 'root'
 })
 export class IndexService {
-  
-  
+
+
 
 
 
