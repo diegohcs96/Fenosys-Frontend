@@ -80,14 +80,13 @@
                                                                  (signinmasterForm.controls['passwordUsuario'].dirty || 
                                                                   signinmasterForm.controls['passwordUsuario'].touched) , 
                                                       'is-valid': signinmasterForm.controls['passwordUsuario'].valid}" />
-                        <div class="input-group-append">
-                          <span class="input-group-text" style="background-color: #3850d5;">
-                            <i style="color: white;" class="fa-regular" [ngClass]="{
-                                                                'fa-eye': !fieldTextType,
-                                                                'fa-eye-slash': fieldTextType}"
-                              (click)="toggleFieldTextType()"></i>
-                          </span>
-                        </div>
+                         <div class="input-group-append" (click)="toggleFieldTextType()">
+                           <a type="button" class="input-group-text" style="background-color: #3850d5;">
+                             <i style="color: white;" class="fa-regular" [ngClass]="{
+                                                                  'fa-eye': !fieldTextType,
+                                                                  'fa-eye-slash': fieldTextType}"></i>
+                           </a>
+                         </div>
                         <div class="invalid-feedback">
                           <span class="text-danger"
                             *ngIf="signinmasterForm.controls['passwordUsuario'].hasError('required')">
