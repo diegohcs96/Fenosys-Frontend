@@ -106,9 +106,9 @@ export class SignupAdminComponent implements OnInit {
   SignUpAdmin(): void {
 
     //DEV
-    this.token = location.href.slice(35);
+    //this.token = location.href.slice(35);
     //QA
-    //this.token = location.href.slice(43); 
+    this.token = location.href.slice(43); 
 
     console.log(this.token)
 
