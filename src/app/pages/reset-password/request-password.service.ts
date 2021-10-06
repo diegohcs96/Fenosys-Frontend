@@ -13,14 +13,14 @@ const httpOptions = {
 })
 export class RequestPasswordService {
 
-  private API_URL = GlobalUrl.BASE_URL + 'api/restart_password/send';
-  private API_URL1 = GlobalUrl.BASE_URL + 'api';
+  private API_Request = GlobalUrl.BASE_URL + 'api/restore_password/request';
+  private API_Update = GlobalUrl.BASE_URL + 'api/restore_password/update';
   constructor(private http: HttpClient) { }
 
   SendUrlPasswordReset(passwordreset: PasswordRequest): Observable<any> {
     
     return this.http.post(
-      this.API_URL,
+      this.API_Request,
       passwordreset,
       httpOptions
     )
@@ -29,7 +29,7 @@ export class RequestPasswordService {
   PasswordUpdate(passwordUpdate: PasswordUpdate): Observable<any> {
 
     return this.http.put(
-      this.API_URL1 + `/restart_password/update`,
+      this.API_Update,
       passwordUpdate,
       httpOptions
       );
