@@ -16,13 +16,11 @@ import { AdminRequestComponent } from './pages/master/admin-request/admin-reques
 
 //Request Password
 import { RequestPasswordComponent } from './pages/reset-password/request-password/request-password.component'
-import { ProfileAdminComponent } from './pages/profile/profile-admin/profile-admin.component';
-import { ProfileAgricultorComponent } from './pages/profile/profile-agricultor/profile-agricultor.component';
 import { UpdatePasswordComponent } from './pages/reset-password/update-password/update-password.component';
 
-
 //Profile
-
+import { ProfileAdminComponent } from './pages/profile/profile-admin/profile-admin.component';
+import { ProfileAgricultorComponent } from './pages/profile/profile-agricultor/profile-agricultor.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent, data: { title: 'Fenosys' } },
