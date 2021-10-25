@@ -14,6 +14,8 @@ import { ProfileModule } from './pages/profile/profile.module';
 import { ResetPasswordModule } from './pages/reset-password/reset-password.module'
 import { MasterModule } from './pages/master/master.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ErrorComponent } from './pages/error/error.component';
+import { ErrorModule } from './pages/error/error.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     BrowserModule,
     AppRoutingModule,
     IndexModule,
+    ErrorModule,
     SigninModule,
     SignupModule,
     ProfileModule,

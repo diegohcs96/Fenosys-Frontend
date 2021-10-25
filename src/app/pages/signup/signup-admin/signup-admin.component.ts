@@ -12,8 +12,7 @@ import { SignupAdminService } from './signup-admin.service';
   styleUrls: []
 })
 export class SignupAdminComponent implements OnInit {
-  selectedFotosPerfil: any;
-  currentFotoPerfil: any;
+
   document: any;
   alert = false;
   message: any;
@@ -38,6 +37,8 @@ export class SignupAdminComponent implements OnInit {
 
   SelectProvincia: any = ''
   SelectDistrito: any = ''
+
+  fieldTextType: boolean | undefined;
 
   constructor(private tokenstorageService: TokenStorageService,
     private signinAdminService: SignupAdminService,
@@ -90,17 +91,8 @@ export class SignupAdminComponent implements OnInit {
     this.alert = false;
   }
 
-  subirFotoPerfil(): any {
-
-    if (this.selectedFotosPerfil) {
-      const fotoperfil: File | null = this.selectedFotosPerfil.item(0);
-
-      if (fotoperfil) {
-        this.currentFotoPerfil = fotoperfil;
-      }
-
-      return this.currentFotoPerfil;
-    }
+  toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
   }
 
   SignUpAdmin(): void {
@@ -110,26 +102,22 @@ export class SignupAdminComponent implements OnInit {
     //QA
     //this.token = location.href.slice(43); 
 
-    console.log(this.token)
-
     var admin: SignupAdmin = {
       nombreUsuario: this.adminSignupForm.controls['nombreUsuario'].value,
       apellidoUsuario: this.adminSignupForm.controls['apellidoUsuario'].value,
       distritoUsuario: this.adminSignupForm.controls['distritoUsuario'].value,
       passwordUsuario: this.adminSignupForm.controls['passwordUsuario'].value,
-      requesttokenUsuario: this.token || ""
+      utilitytokenUsuario: this.token || ""
     }
 
-    this.signinAdminService.SignUpAdmin(admin, this.subirFotoPerfil()).subscribe(
+    this.signinAdminService.SignUpAdmin(admin).subscribe(
       data => {
-
-        console.log(data);
         window.location.href = '/signin/admin'
+        this.message = data.message;
       },
       err => {
         this.alert = true;
         this.message = err.error.message;
-        console.log(err);
       }
     )
   }
@@ -140,7 +128,6 @@ export class SignupAdminComponent implements OnInit {
     this.signinAdminService.getPaises().subscribe(
       data => {
         this.Paises = data.sort((a: any, b: any) => b.nombrePais - a.nombrePais);
-        console.log(data);
       },
     );
   }
@@ -156,13 +143,10 @@ export class SignupAdminComponent implements OnInit {
       data => {
 
         this.Departamentos = data.sort((a: any, b: any) => a.idDepartamento - b.idDepartamento);
-        console.log('idPais =>', this.idPaisSelect)
-        console.log(this.Departamentos);
         this.idDepartamentoSelect == null;
 
       }
     );
-
     this.ViewDepartamento = true;
   }
 
@@ -170,32 +154,14 @@ export class SignupAdminComponent implements OnInit {
     this.ViewProvincia = false;
     this.ViewDistrito = false;
 
-
-
     this.idDepartamentoSelect = idDepartamento.target.value;
     this.signinAdminService.getProvincias(this.idDepartamentoSelect).subscribe(
       data => {
         this.Provincias = data;
-        console.log('idDepartamento =>', this.idDepartamentoSelect)
-        console.log(this.Provincias);
         this.idProvinciaSelect == null;
       },
     );
 
-    //  this.agricultorSignupForm.controls['provinciaUsuario'].setErrors({'incorrect': true})   
-
-
-    /*setTimeout (() => {
-      this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)
-    }, 1000);*/
-
-
-    // this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null);
-
-    //console.log(this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null))
-
-    //let a = this.agricultorSignupForm.controls['provinciaUsuario'].value
-    //this.agricultorSignupForm.reset(a);
     this.SelectProvincia = '';
     this.ViewProvincia = true;
   }
@@ -207,31 +173,18 @@ export class SignupAdminComponent implements OnInit {
 
     this.signinAdminService.getDistritos(this.idProvinciaSelect).subscribe(
       data => {
-
         this.Distritos = data.sort((a: any, b: any) => a.idDistrito - b.idDistrito);
-        console.log('idProvincia =>', this.idProvinciaSelect)
-        console.log(this.Distritos);
         this.idDistritoSelect = null;
-        console.log(this.idDistritoSelect);
       }
 
     );
-    /*   setTimeout (() => {
-         this.agricultorSignupForm.controls['distritoUsuario'].setErrors({'incorrect': true})  
-       }, 100);
-   
-       this.agricultorSignupForm.controls['provinciaUsuario'].setErrors(null)*/
-
 
     this.SelectDistrito = '';
-
     this.ViewDistrito = true;
   }
 
   SelectIdDistrito(idDistrito: any) {
-
     this.idDistritoSelect = idDistrito.target.value;
-    console.log(this.idDistritoSelect)
   }
 
 

@@ -25,23 +25,11 @@ export class SignupAdminService {
 
   auxfotoperfil = new File([], '');
 
-  SignUpAdmin(usuario: SignupAdmin, fotoperfil: File): Observable<any> {
-
-    const admindata = new Blob([JSON.stringify(usuario)], {type: 'application/json'})
-
-    var admin: FormData = new FormData();
-
-    admin.append('usuario', admindata);
-
-    if (fotoperfil != null) {
-      admin.append('foto', fotoperfil);      
-    } else {
-      admin.append('foto', this.auxfotoperfil);
-    }
-
+  SignUpAdmin(usuario: SignupAdmin): Observable<any> {
+    
     return this.http.put(
       this.API_admin,
-      admin
+      usuario
     );   
   }
 

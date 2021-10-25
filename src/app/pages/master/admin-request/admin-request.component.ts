@@ -18,7 +18,7 @@ export class AdminRequestComponent implements OnInit {
   passwordrequestData: any;
 
   alert = false;
-  alertCorrecto = false;
+  alert_class: any;
 
   constructor(private requestAdmin: AdminRequestService,
     private fb: FormBuilder,
@@ -36,9 +36,8 @@ export class AdminRequestComponent implements OnInit {
     ]))
   })
 
-  AlertDefault() {
-    this.alert = false;
-    this.alertCorrecto = false;
+  DisplayAlert() {
+    this.alert = true;
   }
 
   PasswordResetRequest(): void {
@@ -49,18 +48,13 @@ export class AdminRequestComponent implements OnInit {
 
     this.requestAdmin.PasswordRequest(passwordRequest).subscribe(
       data => {
-        this.alertCorrecto = true;
-        this.passwordrequestData = data.message;
-        console.log(this.passwordrequestData);
-
+        this.alert_class = 'alert alert-info bg-soft-info text-justify';
+        this.message = data.message;
       },
       err => {
-        this.alert = true;
+        this.alert_class = 'alert alert-danger text-justify';
         this.message = err.error.message;
-        console.log(err);
       }
     )
   }
-
-
 }

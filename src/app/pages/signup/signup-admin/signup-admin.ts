@@ -1,5 +1,5 @@
 export interface SignupAdmin {
-    requesttokenUsuario: String;
+    utilitytokenUsuario: String;
     nombreUsuario :	String;
     apellidoUsuario	: String;
     distritoUsuario: Number;
