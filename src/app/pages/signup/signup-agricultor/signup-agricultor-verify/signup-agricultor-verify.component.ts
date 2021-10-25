@@ -21,9 +21,9 @@ export class SignupAgricultorVerifyComponent implements OnInit {
 
   SignupAgricultorVerify() {
     //DEV
-    this.verify_token = location.href.slice(47);
+    //this.verify_token = location.href.slice(47);
     //QA
-    //this.verify_token = location.href.slice(55);
+    this.verify_token = location.href.slice(55);
 
     var agricultor_verify: SignupVerify = {
       utilityToken: this.verify_token
