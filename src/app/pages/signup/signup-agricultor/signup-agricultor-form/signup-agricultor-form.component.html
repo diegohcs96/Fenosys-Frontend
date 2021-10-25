@@ -15,6 +15,9 @@
   <link href="/assets/css/materialdesignicons.min.css" rel="stylesheet" type="text/css" />
 
   <link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+
+   <!-- fontawesome-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
 </head>
 
 <body class="vh-100 bg-light" style="background: url(/assets/images/overlay-1.png) center;">
@@ -32,7 +35,7 @@
 
   <div class="contain-box">
     <div class="home-btn">
-      <a href="" class="back-button text-primary h5"><i class="mdi mdi-arrow-left mr-1"></i> Retroceder</a>
+      <a href="/" class="back-button text-primary h5"><i class="mdi mdi-arrow-left mr-1"></i> Retroceder</a>
     </div>
     <div class="home-center">
       <div class="home-desc-center">
@@ -134,7 +137,7 @@
                                                              (agricultorSignupForm.controls['paisUsuario'].dirty || 
                                                               agricultorSignupForm.controls['paisUsuario'].touched) , 
                                                 'is-valid':   agricultorSignupForm.controls['paisUsuario'].valid}">
-                        <option value="" selected disabled>Selecciona un País</option>
+                        <option value="" selected disabled>Seleccione un País</option>
                         <option *ngFor="let pais of Paises" value={{pais.idPais}}> {{pais.nombrePais}}
                         </option>
                       </select>
@@ -156,7 +159,7 @@
                                                              (agricultorSignupForm.controls['departamentoUsuario'].dirty || 
                                                               agricultorSignupForm.controls['departamentoUsuario'].touched) , 
                                                 'is-valid':   agricultorSignupForm.controls['departamentoUsuario'].valid}">
-                        <option value="" selected disabled>Selecciona un Departamento</option>
+                        <option value="" selected disabled>Seleccione un Departamento</option>
                         <option *ngFor="let departamento of Departamentos" value={{departamento.idDepartamento}}>
                           {{departamento.nombreDepartamento}}
                         </option>
@@ -180,7 +183,7 @@
                                                              (agricultorSignupForm.controls['provinciaUsuario'].dirty || 
                                                               agricultorSignupForm.controls['provinciaUsuario'].touched) , 
                                                 'is-valid':   agricultorSignupForm.controls['provinciaUsuario'].valid}">
-                        <option value="" disabled>Selecciona una Provincia</option>
+                        <option value="" disabled>Seleccione una Provincia</option>
                         <option *ngFor="let provincia of Provincias" value={{provincia.idProvincia}}>
                           {{provincia.nombreProvincia}}
                         </option>
@@ -202,7 +205,7 @@
                                                              (agricultorSignupForm.controls['distritoUsuario'].dirty || 
                                                               agricultorSignupForm.controls['distritoUsuario'].touched) , 
                                                 'is-valid':   agricultorSignupForm.controls['distritoUsuario'].valid}">
-                        <option value="" selected="selected" disabled>Selecciona un Distrito</option>
+                        <option value="" selected="selected" disabled>Seleccione un Distrito</option>
                         <option *ngFor="let distrito of Distritos" value={{distrito.idDistrito}}>
                           {{distrito.nombreDistrito}}
                         </option>
@@ -241,7 +244,7 @@
                     <div class="form-group">
                       <label for="username" class="letraRegistro nombreRegistro"
                         style="font-size: 1.4vh; font-weight: bolder;">Usuario</label>
-                      <input type="text" class="form-control" placeholder="Ingrese su Usuario para su cuenta"
+                      <input type="text" class="form-control" placeholder="Ingrese un Usuario"
                         formControlName="usernameUsuario" required
                         [ngClass]="{
                                                 'is-invalid': agricultorSignupForm.controls['usernameUsuario'].invalid && 
@@ -272,69 +275,77 @@
                     <div class="form-group">
                       <label for="userpassword" class="letraRegistro"
                         style="font-size: 1.4vh; font-weight: bolder;">Contraseña</label>
-                      <input type="password" class="form-control" placeholder="Ingrese la Contraseña deseada"
-                        formControlName="passwordUsuario" required
-                        [ngClass]="{
-                                                'is-invalid': agricultorSignupForm.controls['passwordUsuario'].invalid && 
-                                                              (agricultorSignupForm.controls['passwordUsuario'].dirty || 
-                                                              agricultorSignupForm.controls['passwordUsuario'].touched) , 
-                                                  'is-valid': agricultorSignupForm.controls['passwordUsuario'].valid}" />
-
-                      <div class="invalid-feedback">
-                        <span class="text-danger"
-                          *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('required')">
-                          No puede dejar este campo vacío
-                        </span>
-                      </div>
-                      <div class="invalid-feedback">
-                        <span class="text-danger"
-                          *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('minlength')">
-                          Debe contener al menos 8 caracteres
-                        </span>
-                      </div>
-                      <div class="invalid-feedback">
-                        <span class="text-danger"
-                          *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('maxlength')">
-                          Debe contener al menos 20 caracteres
-                        </span>
-                      </div>
-                      <div class="invalid-feedback">
-                        <span class="text-danger"
-                          *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordnumber')">
-                          Debe contener al menos un número
-                        </span>
-                      </div>
-                      <div class="invalid-feedback">
-                        <span class="text-danger"
-                          *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passworduppercase')">
-                          Debe contener al menos una letra mayúscula
-                        </span>
-                      </div>
-                      <div class="invalid-feedback">
-                        <span class="text-danger"
-                          *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordsmallcase')">
-                          Debe contener al menos una letra minúscula
-                        </span>
-                      </div>
-                      <div class="invalid-feedback">
-                        <span class="text-danger"
-                          *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordspecialcharacter')">
-                          Debe contener al menos un carácter especial
-                        </span>
+                      <div class="input-group">
+                        <input class="form-control" formControlName="passwordUsuario"
+                        placeholder="Ingrese una Contraseña" [type]="fieldTextType ? 'text' : 'password'"
+                          [ngClass]="{
+                                                    'is-invalid': agricultorSignupForm.controls['passwordUsuario'].invalid && 
+                                                                 (agricultorSignupForm.controls['passwordUsuario'].dirty || 
+                                                                  agricultorSignupForm.controls['passwordUsuario'].touched) , 
+                                                      'is-valid': agricultorSignupForm.controls['passwordUsuario'].valid}" />
+                        <div class="input-group-append" (click)="toggleFieldTextType()">
+                          <a type="button" class="input-group-text" style="background-color: #3850d5;">
+                            <i style="color: white;" class="fa-regular" [ngClass]="{
+                              'fa-eye': !fieldTextType,
+                              'fa-eye-slash': fieldTextType}"
+                              ></i>
+                            </a>
+                        </div>
+                        <div class="invalid-feedback">
+                          <span class="text-danger"
+                            *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('required')">
+                            No puede dejar este campo vacío
+                          </span>
+                        </div>
+                        <div class="invalid-feedback">
+                          <span class="text-danger"
+                            *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('minlength')">
+                            Debe contener al menos 8 caracteres
+                          </span>
+                        </div>
+                        <div class="invalid-feedback">
+                          <span class="text-danger"
+                            *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('maxlength')">
+                            Debe contener como máximo 20 caracteres
+                          </span>
+                        </div>
+                        <div class="invalid-feedback">
+                          <span class="text-danger"
+                            *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordnumber')">
+                            Debe contener al menos un número
+                          </span>
+                        </div>
+                        <div class="invalid-feedback">
+                          <span class="text-danger"
+                            *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passworduppercase')">
+                            Debe contener al menos una letra mayúscula
+                          </span>
+                        </div>
+                        <div class="invalid-feedback">
+                          <span class="text-danger"
+                            *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordsmallcase')">
+                            Debe contener al menos una letra minúscula
+                          </span>
+                        </div>
+                        <div class="invalid-feedback">
+                          <span class="text-danger"
+                            *ngIf="agricultorSignupForm.controls['passwordUsuario'].hasError('passwordspecialcharacter')">
+                            Debe contener al menos un carácter especial
+                          </span>
+                        </div>
                       </div>
                     </div>
-
-                    <div *ngIf="this.alert" class="alert alert-danger text-justify" role="alert">
-                      {{message}}
-                    </div>
-
                     <!---->
                     <div class="mt-3">
                       <button type="submit" class="btn btn-primary btn-block text-uppercase"
-                        [disabled]="!agricultorSignupForm.valid" (click)="this.AlertDefault()">Regístrate</button>
+                        [disabled]="!agricultorSignupForm.valid" (click)="this.DisplayAlert()">Regístrate</button>
                     </div>
                     <div class="mt-4 mb-0 text-center">
-                      <p class="mb-0">¿Tienes una cuenta? <a href="login.html" class="text-info">¡Logueate!</a></p>
+                      <p class="mb-0">¿Tienes una cuenta? <a href="/signin/agricultor" class="text-info">¡Logueate!</a></p>
+                    </div>
+                    <br>
+                    <div *ngIf="this.alert" [ngClass]="this.alert_class" role="alert">
+                      {{message}}
                     </div>
                   </form>
                 </div>
@@ -346,5 +357,5 @@
     </div>
   </div>
 </body>
-
 </html>
+

@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignupAdminComponent } from './signup-admin/signup-admin.component';
-import { SignupAgricultorComponent } from './signup-agricultor/signup-agricultor.component';
 import { ReactiveFormsModule,FormsModule } from '@angular/forms';
+import { SignupAgricultorVerifyComponent } from './signup-agricultor/signup-agricultor-verify/signup-agricultor-verify.component';
+import { SignupAgricultorFormComponent } from './signup-agricultor/signup-agricultor-form/signup-agricultor-form.component';
 
 @NgModule({
   declarations: [
     SignupAdminComponent,
-    SignupAgricultorComponent
+    SignupAgricultorVerifyComponent,
+    SignupAgricultorFormComponent
   ],
   imports: [
     CommonModule,

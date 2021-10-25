@@ -44,7 +44,7 @@
                 <div class="text-center">
                   <h4 class="text-primary">Solicitud de Administrador</h4>
 
-                  <p class="text-muted f-18">Ingresa el correo del Solicitante.</p>
+                  <p class="text-muted f-18">Ingresa el correo del Solicitante</p>
                 </div>
 
                 <div class="custom-form">
@@ -53,10 +53,10 @@
 
                     <div class="form-group">
                       <label for="useremail">Correo Electrónico</label>
-                      <input type="email" (input)="this.AlertDefault()" class="form-control" id="useremail"
-                        placeholder="Ingresar correo electrónico" formControlName="emailUsuario" [ngClass]="{
+                      <input type="email" class="form-control" id="useremail"
+                        placeholder="Ingresar Correo Electrónico" formControlName="emailUsuario" [ngClass]="{
                                                 'is-invalid': adminForm.controls['emailUsuario'].invalid && 
-                                                              (adminForm.controls['emailUsuario'].dirty || 
+                                                             (adminForm.controls['emailUsuario'].dirty || 
                                                               adminForm.controls['emailUsuario'].touched) , 
                                                   'is-valid': adminForm.controls['emailUsuario'].valid}">
                       <div class="invalid-feedback">
@@ -70,25 +70,18 @@
                         </span>
                       </div>
                     </div>
-
-                    <div *ngIf="this.alertCorrecto"
-                      class="alert alert-info bg-soft-info text-info text-center mb-4 mt-4 pt-2" role="alert">
-                      {{passwordrequestData}}
-                    </div>
-
-                    <div *ngIf="this.alert" class="alert alert-danger bg-soft-info text-center mb-4 mt-4 pt-2"
-                      role="alert">
-                      {{message}}
-                    </div>
-
                     <div class="form-group row mb-0">
                       <div class="col-12 text-right">
-                        <button style="margin-top: 5%;" (click)="AlertDefault()"
+                        <button style="margin-top: 5%;" (click)="this.DisplayAlert()"
                           class="btn btn-primary w-100 waves-effect waves-light text-uppercase"
                           [disabled]="!adminForm.valid" type="submit">
                           Enviar Correo
                         </button>
                       </div>
+                    </div>
+                    <br>
+                    <div *ngIf="this.alert" [ngClass]="this.alert_class" role="alert">
+                      {{message}}
                     </div>
                   </form>
                 </div>
@@ -99,8 +92,5 @@
       </div>
     </div>
   </div>
-
-
 </body>
-
 </html>
