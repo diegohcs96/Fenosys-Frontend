@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { GlobalUrl } from 'src/app/util/global-url';
-import { PasswordRequest, PasswordUpdate } from './request-password-interface';
+import { PasswordRequest, PasswordUpdate } from './restore-password-interface';
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -11,7 +11,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class RequestPasswordService {
+export class RestorePasswordService {
 
   private API_Request = GlobalUrl.BASE_URL + 'api/restore_password/request';
   private API_Update = GlobalUrl.BASE_URL + 'api/restore_password/update';
@@ -34,5 +34,4 @@ export class RequestPasswordService {
       httpOptions
       );
   }
-
 }

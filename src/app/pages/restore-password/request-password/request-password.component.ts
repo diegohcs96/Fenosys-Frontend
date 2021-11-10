@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
-import { PasswordRequest } from '../request-password-interface';
-import { RequestPasswordService } from '../request-password.service';
+import { PasswordRequest } from '../restore-password-interface';
+import { RestorePasswordService } from '../restore-password.service';
 
 @Component({
   selector: 'app-request-password',
@@ -37,7 +37,7 @@ export class RequestPasswordComponent implements OnInit {
     ]))
   })
 
-  constructor(private fb:FormBuilder, private passwordRequestService:RequestPasswordService) { }
+  constructor(private fb:FormBuilder, private passwordRestoreService:RestorePasswordService) { }
 
   ngOnInit(): void {
   }
@@ -47,7 +47,7 @@ export class RequestPasswordComponent implements OnInit {
       emailUsuario: this.passwordrequestForm.controls['emailUsuario'].value
     }
 
-    this.passwordRequestService.SendUrlPasswordReset(passwordRequest).subscribe(
+    this.passwordRestoreService.SendUrlPasswordReset(passwordRequest).subscribe(
       data => {
         this.passwordrequestData = data;
         console.log(this.passwordrequestData);

@@ -17,4 +17,4 @@ import { UpdatePasswordComponent } from './update-password/update-password.compo
     NgbModule
   ]
 })
-export class ResetPasswordModule { }
+export class RestorePasswordModule { }
