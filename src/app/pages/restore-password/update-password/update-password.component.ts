@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormBuilder } from '@angular/forms';
 import { TokenStorageService } from 'src/app/util/token-storage.service';
 import { CustomValidators } from '../../tools/custom-validators';
-import { PasswordUpdate } from '../request-password-interface';
-import { RequestPasswordService} from '../request-password.service'
+import { PasswordUpdate } from '../restore-password-interface';
+import { RestorePasswordService} from '../restore-password.service'
 
 @Component({
   selector: 'app-update-password',
@@ -45,7 +45,7 @@ export class UpdatePasswordComponent implements OnInit {
     confirmcontrasena: new FormControl('')
   }, { validator: CustomValidators.passwordMatchValidator("contrasena", "confirmcontrasena") })
 
-  constructor(private requestPasswordService:RequestPasswordService,private fb:FormBuilder,private tokenstorage:TokenStorageService) { }
+  constructor(private restorePasswordService:RestorePasswordService,private fb:FormBuilder,private tokenstorage:TokenStorageService) { }
 
   ngOnInit(): void {
   }
@@ -56,7 +56,7 @@ export class UpdatePasswordComponent implements OnInit {
       restoreToken: this.token || ""
     }
     
-    this.requestPasswordService.PasswordUpdate(passwordUpdate).subscribe(
+    this.restorePasswordService.PasswordUpdate(passwordUpdate).subscribe(
       data => {
         console.log(data);
         this.tokenstorage.signOut();

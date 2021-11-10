@@ -15,9 +15,9 @@ import { SignupAdminComponent } from './pages/signup/signup-admin/signup-admin.c
 import { SignupAgricultorFormComponent } from './pages/signup/signup-agricultor/signup-agricultor-form/signup-agricultor-form.component';
 import { SignupAgricultorVerifyComponent } from './pages/signup/signup-agricultor/signup-agricultor-verify/signup-agricultor-verify.component';
 
-//Request Password
-import { RequestPasswordComponent } from './pages/reset-password/request-password/request-password.component'
-import { UpdatePasswordComponent } from './pages/reset-password/update-password/update-password.component';
+//Restore Password
+import { RequestPasswordComponent } from './pages/restore-password/request-password/request-password.component'
+import { UpdatePasswordComponent } from './pages/restore-password/update-password/update-password.component';
 
 //Profile
 import { ProfileAdminComponent } from './pages/profile/profile-admin/profile-admin.component';

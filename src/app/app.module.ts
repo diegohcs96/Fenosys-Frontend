@@ -11,10 +11,9 @@ import { IndexModule } from './pages/index/index.module';
 import { SigninModule } from './pages/signin/signin.module';
 import { SignupModule } from './pages/signup/signup.module'
 import { ProfileModule } from './pages/profile/profile.module';
-import { ResetPasswordModule } from './pages/reset-password/reset-password.module'
+import { RestorePasswordModule } from './pages/restore-password/restore-password.module';
 import { MasterModule } from './pages/master/master.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ErrorComponent } from './pages/error/error.component';
 import { ErrorModule } from './pages/error/error.module';
 
 @NgModule({
@@ -30,7 +29,7 @@ import { ErrorModule } from './pages/error/error.module';
     SignupModule,
     ProfileModule,
     MasterModule,
-    ResetPasswordModule,
+    RestorePasswordModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
